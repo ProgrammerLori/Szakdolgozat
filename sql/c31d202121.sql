@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Jan 27. 10:14
+-- Létrehozás ideje: 2022. Jan 27. 13:15
 -- Kiszolgáló verziója: 10.4.21-MariaDB
 -- PHP verzió: 8.0.10
 
@@ -30,13 +30,6 @@ SET time_zone = "+00:00";
 CREATE TABLE `admin` (
   `user_id` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- A tábla adatainak kiíratása `admin`
---
-
-INSERT INTO `admin` (`user_id`) VALUES
-('1');
 
 -- --------------------------------------------------------
 
@@ -85,7 +78,7 @@ CREATE TABLE `pictures` (
 CREATE TABLE `users` (
   `user_id` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `pw` varchar(255) NOT NULL,
   `premium` tinyint(1) NOT NULL,
   `followers` int(255) NOT NULL,
   `likes` int(255) NOT NULL,
@@ -93,13 +86,6 @@ CREATE TABLE `users` (
   `e-mail` varchar(255) NOT NULL,
   `profile_picture` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- A tábla adatainak kiíratása `users`
---
-
-INSERT INTO `users` (`user_id`, `username`, `password`, `premium`, `followers`, `likes`, `gender`, `e-mail`, `profile_picture`) VALUES
-('1', '1', '1', 1, 1, 1, 1, '1', 1);
 
 --
 -- Indexek a kiírt táblákhoz
