@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `user_id` varchar(10) NOT NULL
+  `user_id` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -38,7 +38,7 @@ CREATE TABLE `admin` (
 --
 
 CREATE TABLE `Followers` (
-  `user_id` varchar(10) NOT NULL,
+  `user_id` varchar(255) NOT NULL,
   `follower_id` int(255) NOT NULL,
   `followed` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -50,8 +50,8 @@ CREATE TABLE `Followers` (
 --
 
 CREATE TABLE `Likes` (
-  `user_id` varchar(10) NOT NULL,
-  `follower_id` varchar(10) NOT NULL,
+  `user_id` varchar(255) NOT NULL,
+  `follower_id` varchar(255) NOT NULL,
   `liked` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -62,10 +62,10 @@ CREATE TABLE `Likes` (
 --
 
 CREATE TABLE `Pictures` (
-  `user_id` varchar(10) NOT NULL,
-  `picture_id` int(10) NOT NULL,
+  `user_id` varchar(255) NOT NULL,
+  `picture_id` int(255) NOT NULL,
   `picture_name` text NOT NULL,
-  `category` varchar(20) NOT NULL,
+  `category` varchar(255) NOT NULL,
   `size` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -76,15 +76,15 @@ CREATE TABLE `Pictures` (
 --
 
 CREATE TABLE `Users` (
-  `user_id` varchar(10) NOT NULL,
-  `username` varchar(10) NOT NULL,
-  `password` varchar(10) NOT NULL,
+  `user_id` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `premium` tinyint(1) NOT NULL,
   `followers` int(255) NOT NULL,
   `likes` int(255) NOT NULL,
   `gender` tinyint(1) NOT NULL,
-  `e-mail` varchar(20) NOT NULL,
-  `profile_picture` int(10) NOT NULL
+  `e-mail` varchar(255) NOT NULL,
+  `profile_picture` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
