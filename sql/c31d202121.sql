@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Jan 27. 13:15
--- Kiszolgáló verziója: 10.4.21-MariaDB
--- PHP verzió: 8.0.10
+-- Létrehozás ideje: 2022. Jan 30. 15:54
+-- Kiszolgáló verziója: 10.4.16-MariaDB
+-- PHP verzió: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `user_id` varchar(255) NOT NULL
+  `user_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -38,8 +38,8 @@ CREATE TABLE `admin` (
 --
 
 CREATE TABLE `followers` (
-  `user_id` varchar(255) NOT NULL,
-  `follower_id` varchar(255) NOT NULL,
+  `user_id` int(255) NOT NULL,
+  `follower_id` int(255) NOT NULL,
   `followed` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -50,8 +50,8 @@ CREATE TABLE `followers` (
 --
 
 CREATE TABLE `likes` (
-  `user_id` varchar(255) NOT NULL,
-  `liker_id` varchar(255) NOT NULL,
+  `user_id` int(255) NOT NULL,
+  `liker_id` int(255) NOT NULL,
   `liked` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -62,7 +62,7 @@ CREATE TABLE `likes` (
 --
 
 CREATE TABLE `pictures` (
-  `user_id` varchar(255) NOT NULL,
+  `user_id` int(255) NOT NULL,
   `picture_id` int(255) NOT NULL,
   `picture_name` text NOT NULL,
   `category` varchar(255) NOT NULL,
@@ -76,7 +76,7 @@ CREATE TABLE `pictures` (
 --
 
 CREATE TABLE `users` (
-  `user_id` varchar(255) NOT NULL,
+  `user_id` int(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `pw` varchar(255) NOT NULL,
   `premium` tinyint(1) NOT NULL,
@@ -128,6 +128,34 @@ ALTER TABLE `users`
   ADD KEY `profile_picture` (`profile_picture`);
 
 --
+-- A kiírt táblák AUTO_INCREMENT értéke
+--
+
+--
+-- AUTO_INCREMENT a táblához `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `user_id` int(255) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT a táblához `followers`
+--
+ALTER TABLE `followers`
+  MODIFY `user_id` int(255) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT a táblához `likes`
+--
+ALTER TABLE `likes`
+  MODIFY `user_id` int(255) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT a táblához `users`
+--
+ALTER TABLE `users`
+  MODIFY `user_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- Megkötések a kiírt táblákhoz
 --
 
@@ -141,22 +169,21 @@ ALTER TABLE `admin`
 -- Megkötések a táblához `followers`
 --
 ALTER TABLE `followers`
-  ADD CONSTRAINT `follower` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `following` FOREIGN KEY (`follower_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `followed` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Megkötések a táblához `likes`
 --
 ALTER TABLE `likes`
-  ADD CONSTRAINT `liked` FOREIGN KEY (`liker_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `liker` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `liked` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `liker` FOREIGN KEY (`liker_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Megkötések a táblához `pictures`
 --
 ALTER TABLE `pictures`
-  ADD CONSTRAINT `pictures` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `profile` FOREIGN KEY (`picture_id`) REFERENCES `users` (`profile_picture`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `profilep` FOREIGN KEY (`picture_id`) REFERENCES `users` (`profile_picture`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
