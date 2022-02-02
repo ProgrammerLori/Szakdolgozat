@@ -1,5 +1,9 @@
+
 <?php
 
-include 'view/login.php';
+
+    
+
+include 'view/index.php';
 
 ?>

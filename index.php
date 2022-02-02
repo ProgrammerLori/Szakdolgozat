@@ -17,8 +17,8 @@ if(!empty($_REQUEST['action'])) {
 }
 
 // ki vagy be vagyok lépve?
-if(!empty($_SESSION["id"])) {
-        $szoveg = $_SESSION["nev"].": Kilépés";
+if(!empty($_SESSION["users_id"])) {
+        $szoveg = $_SESSION["username"].": Kilépés";
         $action = "kilepes";
 }
 else {

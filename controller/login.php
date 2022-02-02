@@ -1,22 +1,22 @@
 
 <?php
 
-if(isset($_POST['username']) and isset($_POST['pw'])) {
+if(isset($_POST['username']) and isset($_POST['passw'])) {
 	$loginError = '';
-	if(strlen($_POST['user']) == 0) $loginError .= "Nem írtál be felhasználónevet<br>";
-	if(strlen($_POST['pw']) == 0) $loginError .= "Nem írtál be jelszót<br>";
+	if(strlen($_POST['username']) == 0) $loginError .= "Nem írtál be felhasználónevet<br>";
+	if(strlen($_POST['passw']) == 0) $loginError .= "Nem írtál be jelszót<br>";
 	if($loginError == '') {
-		$sql = "SELECT users_id FROM users WHERE username = '".$_POST['user']."' ";
+		$sql = "SELECT users_id FROM users WHERE username = '".$_POST['username']."' ";
 
 		if(!$result = $conn->query($sql)) echo $conn->error;
 
 		if ($result->num_rows > 0) {
 			
 			if($row = $result->fetch_assoc()) {
-				$tanulo -> set_user($row['user_id'], $conn);
-				if(md5($_POST['passw']) == $tanulo->get_jelszo()) {
-					$_SESSION["user_id"] = $row['user_id'];
-					$_SESSION["username"] = $tanulo->get_nev();
+				$tanulo -> set_user($row['users_id'], $conn);
+				if(md5($_POST['passw']) == $tanulo->get_pw()) {
+					$_SESSION['users_id'] = $row['users_id'];
+					$_SESSION['username'] = $tanulo->get_username();
                     header('Location: index.php');
                     exit();
 				}

@@ -1,30 +1,32 @@
 <?php
 class Users {
     
-    private $id;
-    private $nev;
-    private $sor;
-    private $oszlop;
-    private $jelszo;
-    private $felhasznalonev;
-
-    public function set_user($id, $conn) {
+    private $users_id;
+    private $username;
+    private $pw;
+    private $premium;
+    private $followers;
+    private $likes;
+    private $gender;
+    private $email;
+    private $profile_picture;
+    public function set_user($users_id, $conn) {
         // adatbázisból lekérdezzük
-        $sql = "SELECT users_id, username, pw, premium, followers, likes, gender, e-mail, profile_picture FROM users";
-        $sql .= " WHERE users_id = $id ";
+        $sql = "SELECT users_id, username, pw, premium, followers, likes, gender, email, profile_picture FROM users";
+        $sql .= " WHERE users_id = $users_id ";
         $result = $conn->query($sql);
         if ($conn->query($sql)) {
             if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc();
                 $this->users_id = $row['users_id'];
                 $this->username = $row['username'];
-                $this->password = $row['pw'];
+                $this->pw = $row['pw'];
                 $this->premium = $row['premium'];
                 $this->followers = $row['followers'];
                 $this->likes = $row['likes'];
-                $this->likes = $row['gender'];
-                $this->likes = $row['email'];
-                $this->likes = $row['profile_picture'];
+                $this->gender = $row['gender'];
+                $this->email = $row['email'];
+                $this->profile_picture = $row['profile_picture'];
                 
             }
         } 
@@ -57,14 +59,25 @@ class Users {
         return $this->gender;
     }
     public function get_email() {
-        return $this->gender;
+        return $this->email;
     }
     public function get_profile_picture() {
-        return $this->gender;
+        return $this->profile_picture;
     }
     public function get_users_id() {
-        return $this->gender;
+        return $this->_users_id;
     }
-    
+    public function felhasznaloLista($conn) {
+        $lista = array();
+        $sql = "SELECT id FROM users";
+        if($result = $conn->query($sql)) {
+            if ($result->num_rows > 0) {
+				while($row = $result->fetch_assoc()) {
+                    $lista[] = $row['users_id'];
+                }
+            }
+        }
+        return $lista;
+    }   
 }
 ?>

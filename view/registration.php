@@ -9,7 +9,7 @@
     <?php
 echo "<h2>Regisztráció</h2>"
 ?>
-							Felhasználó:<br><input type="text" name="user">
+							Felhasználó:<br><input type="text" name="username">
 							<br>
 							Jelszó: <br><input type="password" name="passw">
 							<br>
