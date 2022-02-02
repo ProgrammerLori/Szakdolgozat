@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Jan 30. 15:54
+-- Létrehozás ideje: 2022. Feb 02. 16:24
 -- Kiszolgáló verziója: 10.4.16-MariaDB
 -- PHP verzió: 7.4.12
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `user_id` int(255) NOT NULL
+  `users_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -38,7 +38,7 @@ CREATE TABLE `admin` (
 --
 
 CREATE TABLE `followers` (
-  `user_id` int(255) NOT NULL,
+  `users_id` int(255) NOT NULL,
   `follower_id` int(255) NOT NULL,
   `followed` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -50,7 +50,7 @@ CREATE TABLE `followers` (
 --
 
 CREATE TABLE `likes` (
-  `user_id` int(255) NOT NULL,
+  `users_id` int(255) NOT NULL,
   `liker_id` int(255) NOT NULL,
   `liked` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -62,7 +62,7 @@ CREATE TABLE `likes` (
 --
 
 CREATE TABLE `pictures` (
-  `user_id` int(255) NOT NULL,
+  `users_id` int(255) NOT NULL,
   `picture_id` int(255) NOT NULL,
   `picture_name` text NOT NULL,
   `category` varchar(255) NOT NULL,
@@ -76,7 +76,7 @@ CREATE TABLE `pictures` (
 --
 
 CREATE TABLE `users` (
-  `user_id` int(255) NOT NULL,
+  `users_id` int(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `pw` varchar(255) NOT NULL,
   `premium` tinyint(1) NOT NULL,
@@ -95,27 +95,27 @@ CREATE TABLE `users` (
 -- A tábla indexei `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`users_id`);
 
 --
 -- A tábla indexei `followers`
 --
 ALTER TABLE `followers`
-  ADD PRIMARY KEY (`user_id`),
+  ADD PRIMARY KEY (`users_id`),
   ADD KEY `follower_id` (`follower_id`);
 
 --
 -- A tábla indexei `likes`
 --
 ALTER TABLE `likes`
-  ADD PRIMARY KEY (`user_id`),
+  ADD PRIMARY KEY (`users_id`),
   ADD UNIQUE KEY `liker_id` (`liker_id`);
 
 --
 -- A tábla indexei `pictures`
 --
 ALTER TABLE `pictures`
-  ADD PRIMARY KEY (`user_id`),
+  ADD PRIMARY KEY (`users_id`),
   ADD KEY `picture_id` (`picture_id`),
   ADD KEY `picture_id_2` (`picture_id`);
 
@@ -123,7 +123,7 @@ ALTER TABLE `pictures`
 -- A tábla indexei `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`),
+  ADD PRIMARY KEY (`users_id`),
   ADD UNIQUE KEY `profile_picture_2` (`profile_picture`),
   ADD KEY `profile_picture` (`profile_picture`);
 
@@ -135,25 +135,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT a táblához `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `user_id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `users_id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT a táblához `followers`
 --
 ALTER TABLE `followers`
-  MODIFY `user_id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `users_id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT a táblához `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `user_id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `users_id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT a táblához `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `users_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Megkötések a kiírt táblákhoz
@@ -163,27 +163,27 @@ ALTER TABLE `users`
 -- Megkötések a táblához `admin`
 --
 ALTER TABLE `admin`
-  ADD CONSTRAINT `admin` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `admin` FOREIGN KEY (`users_id`) REFERENCES `users` (`users_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Megkötések a táblához `followers`
 --
 ALTER TABLE `followers`
-  ADD CONSTRAINT `followed` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `followed` FOREIGN KEY (`users_id`) REFERENCES `users` (`users_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Megkötések a táblához `likes`
 --
 ALTER TABLE `likes`
-  ADD CONSTRAINT `liked` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `liker` FOREIGN KEY (`liker_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `liked` FOREIGN KEY (`users_id`) REFERENCES `users` (`users_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `liker` FOREIGN KEY (`liker_id`) REFERENCES `users` (`users_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Megkötések a táblához `pictures`
 --
 ALTER TABLE `pictures`
   ADD CONSTRAINT `profilep` FOREIGN KEY (`picture_id`) REFERENCES `users` (`profile_picture`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `user` FOREIGN KEY (`users_id`) REFERENCES `users` (`users_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
