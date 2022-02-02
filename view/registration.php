@@ -13,4 +13,6 @@ echo "<h2>Regisztráció</h2>"
 							<br>
 							Jelszó: <br><input type="password" name="passw">
 							<br>
+							E-mail: <br><input type="text" name="email">
+							<br>
 						<input type="submit">

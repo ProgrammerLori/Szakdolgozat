@@ -3,7 +3,8 @@
 session_start();
 
 require 'includes/db.inc.php';
-
+require 'model/Users.php';
+$tanulo = new Users;
 
 
 
