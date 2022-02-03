@@ -37,7 +37,7 @@ class Users {
 
     // építsük fel az összes get metódust
     public function get_username() {
-        return $this-username;
+        return $this->username;
     }
 
     public function get_pw() {

@@ -12,19 +12,22 @@ $tanulo = new Users;
 $page = 'index';
 
 // kilépés végrehajtása
-if(!empty($_REQUEST['action'])) {
-	if($_REQUEST['action'] == 'kilepes') session_unset();
-}
+
 
 // ki vagy be vagyok lépve?
 if(!empty($_SESSION["users_id"])) {
-        $szoveg = $_SESSION["username"].": Kilépés";
+        $szoveg = "Kilépés ";
         $action = "kilepes";
+        $regiszt="";
+        $fo=$_SESSION["username"];
 }
 else {
         $szoveg = "Belépés";
-        $action = "login";        
+        $action = "login"; 
+        $regiszt="Regisztráció";  
+        $fo="";     
 } 
+
 
 // router
 if(isset($_REQUEST['page'])) {
@@ -34,12 +37,14 @@ if(isset($_REQUEST['page'])) {
 }
 
 $menupontok = array(    'index' => "Főoldal", 
-                        'login' => $szoveg,
-                        'registration' => "Regisztráció",
+                        'profile'=> $fo,
+                        $action => $szoveg,
+                        'registration' => $regiszt,
+                        
                 );
 
-$title = $menupontok[$page];
 
+                $title = $menupontok[$page];
 include 'includes/htmlheader.inc.php';
 ?>
 <body>
