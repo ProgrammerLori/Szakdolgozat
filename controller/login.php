@@ -17,6 +17,8 @@ if(isset($_POST['username']) and isset($_POST['passw'])) {
 				if(md5($_POST['passw']) == $tanulo->get_pw()) {
 					$_SESSION['users_id'] = $row['users_id'];
 					$_SESSION['username'] = $tanulo->get_username();
+					$_SESSION['email'] = $tanulo->get_email();
+					$_SESSION['gender'] = $tanulo->get_gender();
                     header('Location: index.php');
                     exit();
 				}
