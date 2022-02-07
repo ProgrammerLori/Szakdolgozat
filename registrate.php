@@ -3,8 +3,8 @@ include 'includes/db.inc.php';
 
 
     
-$sql = "INSERT INTO users (username,pw,email)
-VALUES ('".$_POST['username']."','".md5($_POST['passw'])."','".$_POST['email']."')";
+$sql = "INSERT INTO users (username,pw,email,gender)
+VALUES ('".$_POST['username']."','".md5($_POST['passw'])."','".$_POST['email']."','".$_POST['gender']."')";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";

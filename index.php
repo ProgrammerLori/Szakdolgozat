@@ -18,14 +18,14 @@ $page = 'index';
 if(!empty($_SESSION["users_id"])) {
         $szoveg = "Kilépés ";
         $action = "kilepes";
-        $regiszt="";
+        
         $fo=$_SESSION["username"];
 }
 else {
         $szoveg = "Belépés";
         $action = "login"; 
         $regiszt="Regisztráció";  
-        $fo="";     
+            
 } 
 
 
@@ -35,13 +35,21 @@ if(isset($_REQUEST['page'])) {
                 $page = $_REQUEST['page']; 
         }
 }
+if(empty($_SESSION["users_id"])){
 
-$menupontok = array(    'index' => "Főoldal", 
-                        'profile'=> $fo,
-                        $action => $szoveg,
-                        'registration' => $regiszt,
+                $menupontok = array(    'index' => "Főoldal",
+                                        $action => $szoveg,
+                                        'registration' => $regiszt,
+                );
+}
+else{
+                $menupontok = array(    'index' => "Főoldal", 
+                                        'profile'=> $fo,
+                                        $action => $szoveg,
+                        
                         
                 );
+}
 
 
                 $title = $menupontok[$page];
