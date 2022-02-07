@@ -37,6 +37,7 @@ if(isset($_REQUEST['page'])) {
 }
 if(empty($_SESSION["users_id"])){
 
+
                 $menupontok = array(    'index' => "Főoldal",
                                         $action => $szoveg,
                                         'registration' => $regiszt,
@@ -50,6 +51,7 @@ else{
                         
                 );
 }
+
 
 
                 $title = $menupontok[$page];
