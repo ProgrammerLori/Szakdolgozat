@@ -12,7 +12,7 @@ class Users {
     private $profile_picture;
     public function set_user($users_id, $conn) {
         // adatbázisból lekérdezzük
-        $sql = "SELECT users_id, username, pw, premium, followers, likes, gender, email, profile_picture FROM users";
+        $sql = "SELECT users_id, username, pw, premium, followers, likes, gender, email  FROM users";
         $sql .= " WHERE users_id = $users_id ";
         $result = $conn->query($sql);
         if ($conn->query($sql)) {
@@ -26,7 +26,7 @@ class Users {
                 $this->likes = $row['likes'];
                 $this->gender = $row['gender'];
                 $this->email = $row['email'];
-                $this->profile_picture = $row['profile_picture'];
+               
                 
             }
         } 
@@ -61,9 +61,7 @@ class Users {
     public function get_email() {
         return $this->email;
     }
-    public function get_profile_picture() {
-        return $this->profile_picture;
-    }
+    
     public function get_users_id() {
         return $this->_users_id;
     }

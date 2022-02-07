@@ -14,14 +14,15 @@
             if($_SERVER['REQUEST_URI'] == '/szakdolgozat/'.$key) $active = ' active';
 
             if($key == 'felhasznalo') $key.='&action='.$action;
-            ?>
-            <li class="nav-item<?php echo $active; ?>">
-                <a class="nav-link" href="index.php?page=<?php echo $key; ?>"><?php echo $value; ?></a>
-            </li>
-            <?php            
-        }
-
-      ?>
+            if($key=='profile'){
+              ?><img src="picture/default_profile_picture.png" id="kep">
+              <li class="nav-item<?php echo $active; ?>">
+              <?php 
+            }else ?> <li class="nav-item<?php echo $active; ?>">
+            <a class="nav-link" href="index.php?page=<?php echo $key; ?>"><?php echo $value; ?></a> </li>           
+        
+<?php }?>
+      
     </ul>
   </div>
 </nav>

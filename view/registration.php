@@ -5,7 +5,7 @@
 
 <table>
 
-<form action="registrate.php" method="post" value="registration">
+<form action="index.php?page=registration" method="post" value="registration">
     <?php
 echo "<h2>Regisztráció</h2>"
 ?>
@@ -15,4 +15,8 @@ echo "<h2>Regisztráció</h2>"
 							<br>
 							E-mail: <br><input type="text" name="email">
 							<br>
+							
+							Neme:<br><input type="radio" name="gender" value="0">Férfi<br><input type="radio" name="gender"value="1">Nő
+							<br>
+							
 						<input type="submit">
