@@ -1,1 +1,1 @@
-<?php include "view/lostpw.php";
+<?php include "view/lostpw.php";?>
