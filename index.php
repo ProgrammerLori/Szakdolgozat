@@ -52,7 +52,6 @@ else{
                 );
 }
 
-
                 $title = $menupontok[$page];
 include 'includes/htmlheader.inc.php';
 ?>

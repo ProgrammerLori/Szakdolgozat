@@ -109,6 +109,17 @@ INSERT INTO `profile_pics` (`users_id`, `picture_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Tábla szerkezet ehhez a táblához `profile_pics`
+--
+
+CREATE TABLE `profile_pics` (
+  `users_id` int(255) NOT NULL,
+  `picture_id` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Tábla szerkezet ehhez a táblához `users`
 --
 

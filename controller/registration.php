@@ -1,6 +1,10 @@
 <?php
 
 
+
+ 
+include 'includes/db.inc.php';
+
 if(isset($_POST['username']) and isset($_POST['passw'])and isset($_POST['email'])) {
 	$loginError = '';
 	if(strlen($_POST['username']) == 0) $loginError .= "Nem írtál be felhasználónevet<br>";
