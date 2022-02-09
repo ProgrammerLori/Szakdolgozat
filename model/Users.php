@@ -9,7 +9,7 @@ class Users {
     private $likes;
     private $gender;
     private $email;
-    private $profile_picture;
+    
     public function set_user($users_id, $conn) {
         // adatbázisból lekérdezzük
         $sql = "SELECT users_id, username, pw, premium, followers, likes, gender, email  FROM users";
