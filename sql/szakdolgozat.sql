@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Feb 03. 13:18
--- Kiszolgáló verziója: 10.4.21-MariaDB
--- PHP verzió: 8.0.10
+-- Létrehozás ideje: 2022. Feb 09. 19:49
+-- Kiszolgáló verziója: 10.4.16-MariaDB
+-- PHP verzió: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,6 +29,17 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admin` (
   `users_id` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `favourite`
+--
+
+CREATE TABLE `favourite` (
+  `users_id` int(255) NOT NULL,
+  `favorited_picture_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -66,8 +77,34 @@ CREATE TABLE `pictures` (
   `picture_id` int(255) NOT NULL,
   `picture_name` text NOT NULL,
   `category` varchar(255) NOT NULL,
-  `size` int(255) NOT NULL
+  `size` int(255) NOT NULL,
+  `format` varchar(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- A tábla adatainak kiíratása `pictures`
+--
+
+INSERT INTO `pictures` (`users_id`, `picture_id`, `picture_name`, `category`, `size`, `format`) VALUES
+(41, 2, 'test1', 'old', 1024, '');
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `profile_pics`
+--
+
+CREATE TABLE `profile_pics` (
+  `users_id` int(255) NOT NULL,
+  `picture_id` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- A tábla adatainak kiíratása `profile_pics`
+--
+
+INSERT INTO `profile_pics` (`users_id`, `picture_id`) VALUES
+(41, 2);
 
 -- --------------------------------------------------------
 
@@ -83,17 +120,16 @@ CREATE TABLE `users` (
   `followers` int(255) NOT NULL,
   `likes` int(255) NOT NULL,
   `gender` tinyint(1) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `profile_picture` int(255) NOT NULL
+  `email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- A tábla adatainak kiíratása `users`
 --
 
-INSERT INTO `users` (`users_id`, `username`, `pw`, `premium`, `followers`, `likes`, `gender`, `email`, `profile_picture`) VALUES
-(1, 'cig', 'c918e79a514bda7f2baa124354423eb1', 0, 0, 0, 0, 'asdasd@gmail.com', 1),
-(26, 'asd', '7815696ecbf1c96e6894b779456d330e', 0, 0, 0, 0, 'fustos.lorant.2017ice@bankitatabanya.hu', 0);
+INSERT INTO `users` (`users_id`, `username`, `pw`, `premium`, `followers`, `likes`, `gender`, `email`) VALUES
+(41, 'asd', '7815696ecbf1c96e6894b779456d330e', 0, 0, 0, 0, 'email@shit.com'),
+(42, 'mindenkitmegölök', '7815696ecbf1c96e6894b779456d330e', 0, 0, 0, 0, 'asd@email.com');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -104,6 +140,13 @@ INSERT INTO `users` (`users_id`, `username`, `pw`, `premium`, `followers`, `like
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`users_id`);
+
+--
+-- A tábla indexei `favourite`
+--
+ALTER TABLE `favourite`
+  ADD KEY `favourite_pic` (`favorited_picture_id`),
+  ADD KEY `favouriter` (`users_id`);
 
 --
 -- A tábla indexei `followers`
@@ -128,12 +171,17 @@ ALTER TABLE `pictures`
   ADD KEY `picture_id_2` (`picture_id`);
 
 --
+-- A tábla indexei `profile_pics`
+--
+ALTER TABLE `profile_pics`
+  ADD PRIMARY KEY (`users_id`),
+  ADD UNIQUE KEY `picture_id` (`picture_id`);
+
+--
 -- A tábla indexei `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`users_id`),
-  ADD UNIQUE KEY `profile_picture_2` (`profile_picture`),
-  ADD KEY `profile_picture` (`profile_picture`);
+  ADD PRIMARY KEY (`users_id`);
 
 --
 -- A kiírt táblák AUTO_INCREMENT értéke
@@ -158,10 +206,16 @@ ALTER TABLE `likes`
   MODIFY `users_id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT a táblához `profile_pics`
+--
+ALTER TABLE `profile_pics`
+  MODIFY `users_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+
+--
 -- AUTO_INCREMENT a táblához `users`
 --
 ALTER TABLE `users`
-  MODIFY `users_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `users_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- Megkötések a kiírt táblákhoz
@@ -174,10 +228,18 @@ ALTER TABLE `admin`
   ADD CONSTRAINT `admin` FOREIGN KEY (`users_id`) REFERENCES `users` (`users_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Megkötések a táblához `favourite`
+--
+ALTER TABLE `favourite`
+  ADD CONSTRAINT `favourite_pic` FOREIGN KEY (`favorited_picture_id`) REFERENCES `pictures` (`picture_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `favouriter` FOREIGN KEY (`users_id`) REFERENCES `users` (`users_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Megkötések a táblához `followers`
 --
 ALTER TABLE `followers`
-  ADD CONSTRAINT `followed` FOREIGN KEY (`users_id`) REFERENCES `users` (`users_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `followed` FOREIGN KEY (`users_id`) REFERENCES `users` (`users_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `follower` FOREIGN KEY (`follower_id`) REFERENCES `users` (`users_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Megkötések a táblához `likes`
@@ -190,8 +252,14 @@ ALTER TABLE `likes`
 -- Megkötések a táblához `pictures`
 --
 ALTER TABLE `pictures`
-  ADD CONSTRAINT `profilep` FOREIGN KEY (`picture_id`) REFERENCES `users` (`profile_picture`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `user` FOREIGN KEY (`users_id`) REFERENCES `users` (`users_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Megkötések a táblához `profile_pics`
+--
+ALTER TABLE `profile_pics`
+  ADD CONSTRAINT `profilep` FOREIGN KEY (`picture_id`) REFERENCES `pictures` (`picture_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `userpic` FOREIGN KEY (`users_id`) REFERENCES `users` (`users_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
