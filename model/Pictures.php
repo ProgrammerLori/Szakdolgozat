@@ -1,30 +1,27 @@
 <?php
-class Users {
+class Pictures {
     
     private $users_id;
-    private $username;
-    private $pw;
-    private $premium;
-    private $followers;
-    private $likes;
-    private $gender;
-    private $email;
-    private $profile_picture;
-    public function set_user($users_id, $conn) {
+    private $picture_id;
+    private $picture_name;
+    private $category;
+    private $size;
+    private $formats;
+ 
+    public function set_photo($picture_id, $conn) {
         // adatbázisból lekérdezzük
-        $sql = "SELECT users_id, username, pw, premium, followers, likes, gender, email  FROM users";
-        $sql .= " WHERE users_id = $users_id ";
+        $sql = "SELECT users_id, picture_id, picture_name,category, size, formats, email  FROM pictures";
+        $sql .= " WHERE picture_id = $picture_id ";
         $result = $conn->query($sql);
         if ($conn->query($sql)) {
             if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc();
                 $this->users_id = $row['users_id'];
-                $this->username = $row['username'];
-                $this->pw = $row['pw'];
-                $this->premium = $row['premium'];
-                $this->followers = $row['followers'];
-                $this->likes = $row['likes'];
-                $this->gender = $row['gender'];
+                $this->picture_id = $row['picture_id'];
+                $this->picture_name = $row['picture_name'];
+                $this-> category = $row[' category'];
+                $this->size = $row['size'];
+                $this->formats = $row['formats'];
                 $this->email = $row['email'];
                
                 
@@ -36,27 +33,25 @@ class Users {
     }
 
     // építsük fel az összes get metódust
-    public function get_username() {
-        return $this->username;
+    public function get_picture_id() {
+        return $this->picture_id;
     }
 
-    public function get_pw() {
-        return $this->pw;
+    public function get_picture_name() {
+        return $this->picture_name;
     }
 
-    public function get_premium() {
-        return $this->premium;
+    
+
+    public function get_category() {
+        return $this->category;
     }
 
-    public function get_followers() {
-        return $this->followers;
+    public function get_size() {
+        return $this->size;
     }
-
-    public function get_likes() {
-        return $this->likes;
-    }
-    public function get_gender() {
-        return $this->gender;
+    public function get_formats() {
+        return $this->formats;
     }
     public function get_email() {
         return $this->email;

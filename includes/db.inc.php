@@ -4,8 +4,8 @@
 //Database login -FL
 $servername = "localhost";
 $username = "Szakdoga";
-$password = "/of4acR(b4dw6P5c";
-$dbname = "Szakdolgozat";
+$password = "myYk3gQwjsiPQPRW";
+$dbname = "szakdolgozat";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
