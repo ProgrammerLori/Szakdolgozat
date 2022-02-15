@@ -109,6 +109,42 @@ INSERT INTO `profile_pics` (`users_id`, `picture_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Tábla szerkezet ehhez a táblához `profile_pics`
+--
+
+CREATE TABLE `profile_pics` (
+  `users_id` int(255) NOT NULL,
+  `picture_id` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- A tábla adatainak kiíratása `pictures`
+--
+
+INSERT INTO `pictures` (`users_id`, `picture_id`, `picture_name`, `category`, `size`, `format`) VALUES
+(41, 2, 'test1', 'old', 1024, '');
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `profile_pics`
+--
+
+CREATE TABLE `profile_pics` (
+  `users_id` int(255) NOT NULL,
+  `picture_id` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- A tábla adatainak kiíratása `profile_pics`
+--
+
+INSERT INTO `profile_pics` (`users_id`, `picture_id`) VALUES
+(41, 2);
+
+-- --------------------------------------------------------
+
+--
 -- Tábla szerkezet ehhez a táblához `users`
 --
 

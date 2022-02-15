@@ -1,6 +1,10 @@
 <?php
 
 
+
+ 
+include 'includes/db.inc.php';
+
 if(isset($_POST['username']) and isset($_POST['passw'])and isset($_POST['email'])) {
 	$loginError = '';
 	if(strlen($_POST['username']) == 0) $loginError .= "Nem írtál be felhasználónevet<br>";
@@ -22,6 +26,7 @@ if(isset($_POST['username']) and isset($_POST['passw'])and isset($_POST['email']
   if($_POST['passw']!=$_POST['passw1'])$loginError .= "Nem egyeznek a jelszavak<br>";
 	if($loginError == '') {
 
+	if($loginError == '') {
 		
   $un = mysqli_query($conn, "SELECT * FROM users WHERE username = '".$_POST['username']."'");
   $em = mysqli_query($conn, "SELECT * FROM users WHERE email = '".$_POST['email']."'");
