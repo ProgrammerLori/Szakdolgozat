@@ -8,15 +8,21 @@ $errors=array();
         $allowed_filetypes=array('image/png','image/jpg','image/jpeg');
         
         foreach($_FILES["fileToUpload"]["name"]as $key=>$name ){
+           
+               
+                   
+                
+            
             $target_file = $target_dir . basename($name);
             
+            str_replace(" ","_",$target_file);
           
             if (!in_array($_FILES["fileToUpload"]["type"][$key],$allowed_filetypes)) {
                 $errors[$key][]="A $name a fájl nem jpg vagy png vagy jpeg";
                 
             }
             if(!isset($errors[$key])){
-                if (@move_uploaded_file($_FILES["fileToUpload"]["tmp_name"][$key],$target_file )) {
+                if (@move_uploaded_file($_FILES["fileToUpload"]["tmp_name"][$key],$target_file)) {
                     $i++;
             }else{$errors[$key][]="Hiba történt a $name file mentésekor";}
         }$str=explode("/",$_FILES["fileToUpload"]["type"][$key]);
@@ -31,6 +37,7 @@ if ($conn->query($sql) === TRUE) {
   echo "Error: " . $sql . "<br>" . $conn->error;
 }
 $conn->close();
+header("Location: index.php");
         }
 
 
@@ -42,6 +49,6 @@ $conn->close();
     
 
 
-
+    
 include "view/feltoltes.php"
 ?>

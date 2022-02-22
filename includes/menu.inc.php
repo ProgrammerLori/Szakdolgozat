@@ -16,7 +16,7 @@
 
             if($key == 'felhasznalo') $key.='&action='.$action;
             if($key=='profile'){
-              ?><img src="picture/<?php $_SESSION['picture_name'] ?>.png" id="kep">
+              ?><img src="<?php $_SESSION['picture_name'] .'.png'?>" id="kep">
               <li class="nav-item<?php echo $active; ?>">
               <?php 
             }else ?> <li class="nav-item<?php echo $active; ?>">

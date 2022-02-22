@@ -18,7 +18,7 @@ if(isset($_POST['username']) and isset($_POST['passw'])and isset($_POST['email']
     if(pw == "") {  
        document.getElementById("message").innerHTML = "Kérlek töltsd ki a jelszó mezőt";  
        return false;  
-    }else if (){
+    }else {
       document.getElementById("message").innerHTML = "Kérlek töltsd ki a jelszó mezőt";  
        return false; 
        
@@ -53,7 +53,11 @@ $conn->close();
     }
   }
 }
+
 include 'view/registration.php';
+
+}
 ?>
 
 
+  
