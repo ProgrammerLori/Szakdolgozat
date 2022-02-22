@@ -53,10 +53,10 @@ $conn->close();
     }
   }
 }
-
+}
 include 'view/registration.php';
 
-}
+
 ?>
 
 
