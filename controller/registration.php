@@ -24,40 +24,35 @@ if(isset($_POST['username']) and isset($_POST['passw'])and isset($_POST['email']
        
     }  </script><?php
   if($_POST['passw']!=$_POST['passw1'])$loginError .= "Nem egyeznek a jelszavak<br>";
-	if($loginError == '') {
+	
 
 	if($loginError == '') {
 		
   $un = mysqli_query($conn, "SELECT * FROM users WHERE username = '".$_POST['username']."'");
   $em = mysqli_query($conn, "SELECT * FROM users WHERE email = '".$_POST['email']."'");
+
   if(mysqli_num_rows($un)) {
       exit('This username already exists');
       header('Location: index.php?page=login');
-  }elseif(mysqli_num_rows($em)){
+    }elseif(mysqli_num_rows($em)){
     exit('This email is already registered');
+  }else{
+  $sql = "INSERT INTO users (username,pw,email,gender,premium,followers,likes)
+  VALUES ('".mysqli_real_escape_string($conn,$_POST['username'])."','".md5($_POST['passw'])."','".mysqli_real_escape_string($conn,$_POST['email'])."','".mysqli_real_escape_string($conn,$_POST['gender'])."','0','0','0')";
+
+  if ($conn->query($sql) === TRUE) {
+      echo "New record created successfully";
+      
+      header('Location: index.php?page=login');
+  } else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
   }
-  //<span id = "message" style="color:red"> </span>
-
-else{
-$sql = "INSERT INTO users (username,pw,email,gender,premium,followers,likes)
-VALUES ('".mysqli_real_escape_string($conn,$_POST['username'])."','".md5($_POST['passw'])."','".mysqli_real_escape_string($conn,$_POST['email'])."','".mysqli_real_escape_string($conn,$_POST['gender'])."','0','0','0')";
-
-if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
+  $conn->close();
+      }
     
-    header('Location: index.php?page=login');
-} else {
-  echo "Error: " . $sql . "<br>" . $conn->error;
-}
-$conn->close();
-    }
   }
-}
 }
 include 'view/registration.php';
 
 
 ?>
-
-
-  
