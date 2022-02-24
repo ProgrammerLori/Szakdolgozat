@@ -1,6 +1,6 @@
 <?php
- include 'includes/db.inc.php' 
-
+ include 'includes/db.inc.php' ;
+echo $loginError;
 ?>
 
 <table>

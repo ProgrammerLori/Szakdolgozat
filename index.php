@@ -21,7 +21,6 @@ $page = 'index';
 if(!empty($_SESSION["users_id"])) {
         $szoveg = "Kilépés ";
         $action = "kilepes";
-        
         $fo=$_SESSION["username"];
 }
 else {
