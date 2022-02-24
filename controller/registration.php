@@ -27,6 +27,28 @@ if(isset($_POST['username']) and isset($_POST['passw'])and isset($_POST['email']
       $sql = "INSERT INTO users (username,pw,email,gender,premium,followers,likes)
       VALUES ('".mysqli_real_escape_string($conn,$_POST['username'])."','".md5($_POST['passw'])."','".mysqli_real_escape_string($conn,$_POST['email'])."','".mysqli_real_escape_string($conn,$_POST['gender'])."','0','0','0')";
 
+  $un = mysqli_query($conn, "SELECT * FROM users WHERE username = '".$_POST['username']."'");
+  $em = mysqli_query($conn, "SELECT * FROM users WHERE email = '".$_POST['email']."'");
+
+  if(mysqli_num_rows($un)) {
+      exit('This username already exists');
+      header('Location: index.php?page=login');
+    }elseif(mysqli_num_rows($em)){
+    exit('This email is already registered');
+  }else{
+  $sql = "INSERT INTO users (username,pw,email,gender,premium,followers,likes)
+  VALUES ('".mysqli_real_escape_string($conn,$_POST['username'])."','".md5($_POST['passw'])."','".mysqli_real_escape_string($conn,$_POST['email'])."','".mysqli_real_escape_string($conn,$_POST['gender'])."','0','0','0')";
+
+  if ($conn->query($sql) === TRUE) {
+      echo "New record created successfully";
+      
+      header('Location: index.php?page=login');
+  } else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+  }
+  $conn->close();
+      }
+    
     if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
         
@@ -79,6 +101,10 @@ if(isset($_POST['username']) and isset($_POST['passw'])and isset($_POST['email']
 
 }
   
+  }
+
+}
+
 include 'view/registration.php';
 
 
