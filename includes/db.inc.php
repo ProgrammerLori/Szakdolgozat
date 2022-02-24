@@ -4,7 +4,7 @@
 //Database login -FL
 $servername = "localhost";
 $username = "Szakdoga";
-$password = "myYk3gQwjsiPQPRW";
+$password = "/of4acR(b4dw6P5c";
 $dbname = "szakdolgozat";
 
 // Create connection

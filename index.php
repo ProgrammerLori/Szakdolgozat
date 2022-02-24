@@ -8,7 +8,7 @@ require 'model/ProfileP.php';
 require 'model/Pictures.php';
 $tanulo = new Users;
 $p_photo = new ProfileP;
-$pictures=new Pictures;
+$pictures = new Pictures;
 
 
 // default oldal
@@ -21,7 +21,6 @@ $page = 'index';
 if(!empty($_SESSION["users_id"])) {
         $szoveg = "Kilépés ";
         $action = "kilepes";
-        
         $fo=$_SESSION["username"];
 }
 else {
