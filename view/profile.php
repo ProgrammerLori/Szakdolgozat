@@ -1,11 +1,13 @@
 <?php 
 
-echo'<img id="picikep" src="'.$_SESSION['picture_name'].'"><br>';?>
+echo'<img id="profilkep" src="'.$_SESSION['picture_name'].'"><br>';?>
 
 <form action="index.php?page=profile" method="POST" enctype="multipart/form-data">
         Profilkép megváltoztatása:
         <input type="file" name="profilepic" id="profilepic" >
+        <br>
         <input type="submit">
+        
 </form>
 <?php
 echo "Felhasználó: ".$_SESSION["username"]."<br>" ;

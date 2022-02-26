@@ -1,31 +1,31 @@
 <?php
 
 ?>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-warning">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav nav-pills">
     
       <?php
       
         foreach($menupontok as $key => $value) {
             $active = '';
-            if($_SERVER['REQUEST_URI'] == '/szakdolgozat/'.$key) $active = ' active';
+            if(isset($_REQUEST['page']) and $_REQUEST['page'] == $key) $active = 'active';
 
             if($key == 'felhasznalo') $key.='&action='.$action;
-            if($key=='profile'){
-              ?>
-              <li class="nav-item<?php echo $active; ?>">
-              <?php 
-            }else ?> <li class="nav-item<?php echo $active; ?>">
-            <a class="nav-link" href="index.php?page=<?php echo $key; ?>"><?php echo $value; ?></a> </li>           
+            ?><li class="nav-item ">
+            <a class="nav-link  text-success <?php echo $active; ?> " href="index.php?page=<?php echo $key; ?>"><?php echo $value; ?></a> </li>           
         
-<?php }?>
-<form action="index.php?page=index" method="post" class="form-inline my-2 my-lg-0" name="searchForm">
+        <?php 
+        }
+        ?>
+    <form action="index.php?page=index" method="post" class="form-inline my-2 my-lg-0" name="searchForm">
       <input class="form-control mr-sm-2" type="search" name="search" placeholder="Keresés" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Keresés</button>
+      <button class="btn btn-outline-warning yellowo my-2 my-sm-0" type="submit">Keresés</button>
+
+    
     </form>
     </ul>
   </div>

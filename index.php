@@ -20,7 +20,7 @@ $page = 'index';
 // ki vagy be vagyok lépve?
 if(!empty($_SESSION["users_id"])) {
         $szoveg = "Kilépés ";
-        $action = "kilepes";
+        $action = "logout";
         $fo=$_SESSION["username"];
 }
 else {
@@ -48,7 +48,7 @@ else{
                 $menupontok = array(    'index' => "Főoldal", 
                                         'profile'=> $fo,
                                         $action => $szoveg,
-                                        'feltoltes'=>"Feltöltés"
+                                        'upload'=>"Feltöltés"
                         
                         
                 );

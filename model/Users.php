@@ -4,15 +4,12 @@ class Users {
     private $users_id;
     private $username;
     private $pw;
-    private $premium;
-    private $followers;
-    private $likes;
     private $gender;
     private $email;
     
     public function set_user($users_id, $conn) {
         // adatbázisból lekérdezzük
-        $sql = "SELECT users_id, username, pw, premium, followers, likes, gender, email  FROM users";
+        $sql = "SELECT users_id, username, pw, gender, email  FROM users";
         $sql .= " WHERE users_id = $users_id ";
         $result = $conn->query($sql);
         if ($conn->query($sql)) {
@@ -21,9 +18,6 @@ class Users {
                 $this->users_id = $row['users_id'];
                 $this->username = $row['username'];
                 $this->pw = $row['pw'];
-                $this->premium = $row['premium'];
-                $this->followers = $row['followers'];
-                $this->likes = $row['likes'];
                 $this->gender = $row['gender'];
                 $this->email = $row['email'];
                

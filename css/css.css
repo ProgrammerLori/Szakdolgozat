@@ -1,13 +1,78 @@
+body{
+    background-color: green    !important;
+}
 #kep{
     border-radius: 100%;
 }
-#picikep{
+#profilkep{
     width:70px;
     height: 70px;
     border-radius: 70%;
 }
 .kepek{
-    width:10em;
-    
-    
+    max-width: 10rem;
+    display: block;
+    margin: auto;
+    display: block;
+  
 }
+  
+.flex-container{
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+}   
+.keret{
+    margin:auto;
+    border: solid 2px grey;
+    margin: 1%;
+    background-color: black;
+    color:red;
+    
+    display: flex;
+ 
+  align-items: center;
+}
+select{ background: #28a745;
+        border:none;
+}
+input [type='text']{ background-color: yellow !important;
+    border:none;
+}
+.vastag{
+font-weight: 300 !important;
+
+}
+.yellowo{
+background-color: yellow !important;
+
+
+}
+.sidenav {
+    height: 100%;
+width: 0;
+position: fixed;
+z-index: 1;
+
+left: 0;
+background-color: rgb(135, 240, 240);
+overflow-x: hidden;
+transition: 0.5s;
+padding-top: 60px;
+  }
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: rgb(0, 0, 0);
+    display: block;
+    transition: 0.3s;
+    font-family: 'Supermercado One';
+  }

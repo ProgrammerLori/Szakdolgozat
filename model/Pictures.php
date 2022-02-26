@@ -7,10 +7,11 @@ class Pictures {
     private $category;
     private $size;
     private $formats;
+    
  
     public function set_photo($picture_id, $conn) {
         // adatbázisból lekérdezzük
-        $sql = "SELECT users_id, picture_id, picture_name,category, size, formats  FROM pictures";
+        $sql = "SELECT users_id, picture_id, picture_name,category, size, formats  FROM pictures INNER JOIN cat ON pictures.cat_id=cat.cat_id";
         $sql .= " WHERE picture_id = $picture_id ";
         $result = $conn->query($sql);
         if ($conn->query($sql)) {

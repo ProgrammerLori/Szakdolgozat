@@ -19,15 +19,12 @@
     }
 
     if (isset($_FILES["profilepic"]) ) {
-           
-            
-            $target_file = "pictures/". basename($_FILES["profilepic"]["name"]);
+            $target_file = "pictures/".date("Y-m-d")."-".date("h-i-sa").basename($_FILES["profilepic"]["name"]);
             $str=explode("/",$_FILES["profilepic"]["type"]);
             @move_uploaded_file($_FILES["profilepic"]["tmp_name"],$target_file);
 
-            
-            $sql="INSERT INTO pictures (users_id,picture_name,size,formats,category)
-                VALUES ('".$_SESSION['users_id']."','".$target_file."','".$_FILES["profilepic"]["size"]."','".$str[1]."','0')";
+            $sql="INSERT INTO pictures (users_id,picture_name,size,formats,cat_id)
+                VALUES ('".$_SESSION['users_id']."','".$target_file."','".$_FILES["profilepic"]["size"]."','".$str[1]."','1')";
 
                 if ($conn->query($sql) === TRUE) {
                 } else {
