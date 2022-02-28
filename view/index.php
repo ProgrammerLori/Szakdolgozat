@@ -1,5 +1,6 @@
 <div id="mySidenav" class="sidenav">
 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+<div class="kozep">
     <?php 
 
         if ($pictureIds) {
@@ -16,6 +17,7 @@
         }
         
     ?>
+    </div>
 </div> 
 
      
