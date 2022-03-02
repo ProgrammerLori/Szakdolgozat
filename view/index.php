@@ -1,5 +1,7 @@
+
 <div id="mySidenav" class="sidenav">
 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+<div class="kozep">
     <?php 
 
         if ($pictureIds) {
@@ -7,15 +9,19 @@
             $sql="SELECT cat_id,category FROM cat";
             if(!$result = $conn->query($sql)) echo $conn->error;
             if($result->num_rows > 0){
+                $i=2;
                 while($row = $result->fetch_assoc()) {
                     if($row['category']!="Profilkep"){
-                        echo"<a href='index.php?page=termekek&amp;action='".$row['category']."'>".$row['category']."</a>";
+
+                        echo"<a href='index.php?category=".$i."'>".$row['category']."</a>";
+                        $i++;
                     }
                 }
             }
         }
         
     ?>
+    </div>
 </div> 
 
      
@@ -24,15 +30,28 @@
 
 	echo"<div class='flex-container'>";
     
-if ($pictureIds) {
     
+    
+
+if ($pictureIds) {
+   
     foreach($pictureIds as $pictureId) {
         $pictures->set_photo($pictureId,$conn);
-        if($pictures->get_category()!="Profilkep"){
-            echo '<div class="keret"><span  ><img class="kepek" src="'.$pictures->get_picture_name().'"><span>'.$pictures->get_category().'</span></span></div>';
+        if($category==""){ 
+            if($pictures->get_category()!="Profilkep"){
+                   
+                echo '<div class="keret"><span><img class="kepek" src="'.$pictures->get_picture_name().'"><span>'.$pictures->get_category().'</span></span></div>';
+            }
+        }
+        elseif($pictures->get_cat_id()==$category){ 
+            if($pictures->get_category()!="Profilkep"){
+                   
+                echo '<div class="keret"><span><img class="kepek" src="'.$pictures->get_picture_name().'"><span>'.$pictures->get_category().'</span></span></div>';
+            }
+        }
     }
 }
-}
+
 echo"</div>";
 
 ?>
