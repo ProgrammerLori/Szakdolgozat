@@ -10,6 +10,7 @@ body{
     border-radius: 70%;
 }
 .kepek{
+    max-height:10rem;
     max-width: 10rem;
     display: block;
     margin: auto;
@@ -23,6 +24,7 @@ body{
     text-align: center;
 }   
 .keret{
+    
     margin:auto;
     border: solid 2px grey;
     margin: 1%;

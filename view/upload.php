@@ -14,7 +14,9 @@ if ($errors) {
         }
     }
 }
+
 ?>
+
 
 
     <form action="index.php?page=upload" method="POST" enctype="multipart/form-data">
@@ -36,7 +38,7 @@ if ($errors) {
                 ?>
             </select>
         </label></br>
-        <input type="submit" name="Kép feltöltése" id="submit">
+        <input type="submit" name="submit" id="submit">
         
         </form>
 </body>
