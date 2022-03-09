@@ -37,13 +37,13 @@ if ($pictureIds) {
         if($category==""){ 
             if($pictures->get_category()!="Profilkep"){
                    
-                echo '<div class="keret"><span><img class="kepek" src="'.$pictures->get_picture_name().'"><span>'.$pictures->get_category().'</span></span></div>';
+                echo '<div class="keret"><span><img class="kepek" src="'.$pictures->get_picture_name().'"><span>'.$pictures->get_category().'</span><br><span><a href="index.php?page=searchedUser&searched='.$pictures->get_username().'">'.$pictures->get_username().'</a></span></span></div>';
+                
             }
         }
         elseif($pictures->get_cat_id()==$category){ 
             if($pictures->get_category()!="Profilkep"){
-                   
-                echo '<div class="keret"><span><img class="kepek" src="'.$pictures->get_picture_name().'"><span>'.$pictures->get_category().'</span></span></div>';
+                echo '<div class="keret"><span><img class="kepek" src="'.$pictures->get_picture_name().'"><span>'.$pictures->get_category().'</span><br><span><a href="index.php?page=searchedUser&searched='.$pictures->get_username().'">'.$pictures->get_username().'</a></span></span></div>';
             }
         }
     }

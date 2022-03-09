@@ -9,11 +9,12 @@ require 'model/Pictures.php';
 $tanulo = new Users;
 $p_photo = new ProfileP;
 $pictures = new Pictures;
+$pictureIds=$pictures->kepList($conn);
 
 
 // default oldal
 $page = 'index';
-
+$search="";
 // kilépés végrehajtása
 
 
@@ -31,8 +32,14 @@ else {
 } 
 
 $category="";
+$title='';
 // router
-if(isset($_REQUEST['page'])) {
+if(isset($_REQUEST['searched'])){
+        
+        $search=$_REQUEST['searched'];
+        $page = "searchedUser"; 
+}
+elseif(isset($_REQUEST['page'])) {
         if(file_exists('controller/'.$_REQUEST['page'].'.php')) {
                 $page = $_REQUEST['page']; 
         }
@@ -40,11 +47,7 @@ if(isset($_REQUEST['page'])) {
 
                 $category=$_REQUEST['category'];
 
-}elseif(isset($_REQUEST['search'])){
-        
-        $search=$_REQUEST['search'];
-
-}else header("location: index.php?page=index");
+}
         
     
 if(empty($_SESSION["users_id"])){
@@ -63,8 +66,9 @@ else{
                         
                 );
 }
-
+if(isset($menupontok[$page]))
                 $title = $menupontok[$page];
+                
 include 'includes/htmlheader.inc.php';
 ?>
 <body>

@@ -17,8 +17,6 @@ if ($errors) {
 
 ?>
 
-
-
     <form action="index.php?page=upload" method="POST" enctype="multipart/form-data">
         Tallózás:
         <input type="file" name="fileToUpload[]" id="fileToUpload" multiple>
@@ -37,7 +35,7 @@ if ($errors) {
                 }
                 ?>
             </select>
-        </label></br>
+        </br>
         <input type="submit" name="submit" id="submit">
         
         </form>
