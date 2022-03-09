@@ -8,9 +8,9 @@ $errors=array();
 $target_dir = "pictures/";
 $allowed_filetypes=array('image/png','image/jpg','image/jpeg');
 if(isset($_POST['submit'])){
-    if (isset($_FILES["fileToUpload"][0])) { 
+    if (isset($_FILES["fileToUpload"])) { 
         foreach($_FILES["fileToUpload"]["name"]as $key=>$name ){
-           
+            if($name!=null){
             $target_file = $target_dir .date("Y-m-d")."-".date("h-i-sa"). basename($name);
             str_replace(" ","_",$target_file);
             if (!in_array($_FILES["fileToUpload"]["type"][$key],$allowed_filetypes)) {
@@ -36,11 +36,11 @@ if(isset($_POST['submit'])){
                     $conn->close();
             }else{
                 
-            
-        }
+            }
+        }else $errors[$key][]="Nincs fájl kiválasztva";
         }
  
-    }else $errors[$key][]="Nincs fájl kiválasztva";
+    }
 }
 
 

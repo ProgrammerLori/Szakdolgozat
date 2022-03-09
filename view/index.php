@@ -26,12 +26,17 @@
  <span style="font-size:30px;cursor:pointer" id="oldalsav" onclick="openNav()">☰ Kategóriák</span>
 <?php 
 	echo"<div class='flex-container'>";
+    
+    
+    
 
 if ($pictureIds) {
+   
     foreach($pictureIds as $pictureId) {
         $pictures->set_photo($pictureId,$conn);
         if($category==""){ 
             if($pictures->get_category()!="Profilkep"){
+                   
                 echo '<div class="keret"><span><img class="kepek" src="'.$pictures->get_picture_name().'"><span>'.$pictures->get_category().'</span></span></div>';
             }
         }
