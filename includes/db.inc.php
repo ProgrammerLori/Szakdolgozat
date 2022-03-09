@@ -3,8 +3,8 @@
 <?php
 //Database login -FL
 $servername = "localhost";
-$username = "Szakdoga";
-$password = "asd";
+$username = "root";
+$password = "";
 $dbname = "szakdolgozat";
 
 // Create connection

@@ -21,8 +21,8 @@
         <?php 
         }
         ?>
-    <form action="index.php?page=index" method="post" class="form-inline my-2 my-lg-0" name="searchForm">
-      <input class="form-control mr-sm-2" type="search" name="search" placeholder="Keresés" aria-label="Search">
+    <form action="index.php?search=<?php $search?>" method="post" class="form-inline my-2 my-lg-0" name="searchForm">
+      <input class="form-control mr-sm-2" type="search" name="search" placeholder="Keresés" aria-label="Search" onkeyup="nevetKeres(this.value)">
       <button class="btn btn-outline-warning yellowo my-2 my-sm-0" type="submit">Keresés</button>
 
     

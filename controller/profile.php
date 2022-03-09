@@ -1,6 +1,8 @@
 
 <?php
-
+if (empty($_SESSION['users_id'])) {
+    header('Location: index.php?page=index');
+}
 
     $sql = "SELECT picture_id FROM profile_pics WHERE users_id = '".$_SESSION['users_id']."'";
 
@@ -58,7 +60,7 @@
         }else{
             $sql = "UPDATE profile_pics SET picture_id ='".$_SESSION['picture_id']."' WHERE users_id='".$_SESSION['users_id']."' ";
             if ($conn->query($sql) === TRUE) {
-                header('Location: index.php?page=index');
+                header('Location: index.php?page=profile');
             } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
             }

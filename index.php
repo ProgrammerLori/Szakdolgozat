@@ -21,7 +21,7 @@ $page = 'index';
 if(!empty($_SESSION["users_id"])) {
         $szoveg = "Kilépés ";
         $action = "logout";
-        $fo=$_SESSION["username"];
+        $fo="Profil: ".$_SESSION["username"];
 }
 else {
         $szoveg = "Belépés";
@@ -30,13 +30,23 @@ else {
             
 } 
 
-
+$category="";
 // router
 if(isset($_REQUEST['page'])) {
         if(file_exists('controller/'.$_REQUEST['page'].'.php')) {
                 $page = $_REQUEST['page']; 
         }
-}
+}elseif(isset($_REQUEST['category'])){
+
+                $category=$_REQUEST['category'];
+
+}elseif(isset($_REQUEST['search'])){
+        
+        $search=$_REQUEST['search'];
+
+}else header("location: index.php?page=index");
+        
+    
 if(empty($_SESSION["users_id"])){
 
                 $menupontok = array(    'index' => "Főoldal",
@@ -62,6 +72,7 @@ include 'includes/htmlheader.inc.php';
 
 include 'includes/menu.inc.php';
 include 'controller/'.$page.'.php';
+
 
 ?>
 </body>
