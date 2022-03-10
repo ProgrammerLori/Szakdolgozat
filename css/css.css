@@ -12,7 +12,6 @@ body{
 .kepek{
     max-height:10rem;
     max-width: 10rem;
-    display: block;
     margin: auto;
     display: block;
   
@@ -22,7 +21,17 @@ body{
     display: flex;
     flex-wrap: wrap;
     text-align: center;
-}   
+    width: 50%;
+    margin: auto;
+
+}
+
+.marad{
+    position: sticky !important ;
+    top: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
+    z-index: 1030 !important;}   
 .keret{
     
     margin:auto;
@@ -30,10 +39,9 @@ body{
     margin: 1%;
     background-color: black;
     color:red;
-    
     display: flex;
- 
-  align-items: center;
+    align-items: center;
+
 }
 select{ background: #28a745;
         border:none;

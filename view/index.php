@@ -25,6 +25,7 @@
      
  <span style="font-size:30px;cursor:pointer" id="oldalsav" onclick="openNav()">☰ Kategóriák</span>
 <?php 
+echo"<h1>Üdvözlünk az oldalon!!</h1>";
 	echo"<div class='flex-container'>";
     
     
