@@ -1,5 +1,5 @@
 <?php
-
+$_SESSION['searched_user_id']="";
 $sql = "SELECT users_id FROM users WHERE username = '".$search."'";
 
     if(!$result = $conn->query($sql)) echo $conn->error;
@@ -17,6 +17,7 @@ $sql = "SELECT users_id FROM users WHERE username = '".$search."'";
                
         }
     }
+
 $sql = "SELECT picture_id FROM profile_pics WHERE users_id = '".$_SESSION['searched_user_id']."'";
 
 if(!$result = $conn->query($sql)) echo $conn->error;
