@@ -1,4 +1,5 @@
 <?php
+$_SESSION['searched_user_id']="";
 
 $sql = "SELECT users_id FROM users WHERE username = '".$search."'";
 

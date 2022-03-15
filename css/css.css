@@ -1,5 +1,6 @@
 body{
     background-color: green    !important;
+    
 }
 #kep{
     border-radius: 100%;
@@ -8,40 +9,108 @@ body{
     width:70px;
     height: 70px;
     border-radius: 70%;
+    
+}
+
+.flex-container{
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  width: 80%;
+  margin: auto;
+  justify-content:center;
+  
+  
+  
 }
 .kepek{
-    max-height:10rem;
-    max-width: 10rem;
-    margin: auto;
-    display: block;
+  max-height: 20em;
+  max-width:100%;
+  margin: auto;
+  display: block;
   
-}
-  
-.flex-container{
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
-    width: 50%;
-    margin: auto;
 
 }
+.keret{
+  max-height: 30em;
+ 
+  margin: auto;
+  border: solid 2px grey;
+  margin: 1%;
+  padding: 4% 2% 3% 2%;
+  background-color: rgb(255, 255, 0);
+  color:red;
+  display: flex;
+  flex-basis: 30%;
+  
+  align-items:center;
+  justify-content:space-evenly;
+  
+  
+
+}
+
+
+.p_keret{
+  margin:auto;
+  border: solid 2px grey;
+  margin: 1%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  background-color: rgb(255, 255, 0);
+  color:red;
+  display: flex;
+  align-items: center;
+  display: block;
+}
+
+
+
+
 
 .marad{
-    position: sticky !important ;
+    position: sticky!important ;
     top: 0 !important;
     right: 0 !important;
     left: 0 !important;
-    z-index: 1030 !important;}   
-.keret{
+    z-index: 1030 !important;
     
-    margin:auto;
-    border: solid 2px grey;
-    margin: 1%;
-    background-color: black;
-    color:red;
-    display: flex;
-    align-items: center;
+  }   
 
+.fel{
+  background-image: url("../pictures/like.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-width: 3rem;
+  min-height: 3rem;
+  background-color: black;
+  border: none;
+  
+  border-radius: 100%;
+  
+  
+ 
+  
+}
+.centi{
+  margin:0 5% 0 5%;
+}
+
+.le{
+  background-image: url("../pictures/dislike.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  
+  min-width: 3rem;
+  min-height: 3rem;
+  background-color: black;
+  border: none;
+  
+  border-radius: 100%;
+  
+  
 }
 select{ background: #28a745;
         border:none;
@@ -53,22 +122,20 @@ input [type='text']{ background-color: yellow !important;
 font-weight: 300 !important;
 
 }
-.yellowo{
-background-color: yellow !important;
 
-
-}
 .sidenav {
     height: 100%;
 width: 0;
 position: fixed;
 z-index: 1;
-
+float: left;
 left: 0;
 background-color: rgb(135, 240, 240);
+text-align: center;
 overflow-x: hidden;
-transition: 0.5s;
+transition: 1s;
 padding-top: 60px;
+
   }
   .sidenav .closebtn {
     position: absolute;
@@ -78,15 +145,57 @@ padding-top: 60px;
     margin-left: 50px;
   }
   .sidenav a {
-    padding: 8px 8px 8px 32px;
+    padding: 8px 32px 8px 32px;
+    color: rgb(116, 136, 1);
     text-decoration: none;
     font-size: 25px;
-    color: rgb(0, 0, 0);
+    
     display: block;
-    transition: 0.3s;
+    transition: 0.1s;
     font-family: 'Supermercado One';
   }
   .kozep {
     margin:auto;
 
   }
+  #oldalsav{
+    margin-top: 200px;
+  }
+  
+#absolut{
+  
+  display: flex;
+  align-items:center;
+  justify-content:center;
+  
+}
+
+@media screen and (max-width: 1000px) {
+    .keret {
+      flex-basis: 90%;
+        width: 90%;
+        font-size:5vw;
+      }
+
+    .le{
+      min-width: 5rem;
+      min-height: 5rem;
+    }
+    .fel{
+      min-width: 5rem;
+      min-height: 5rem;
+    }
+    
+    .flex-container{
+      justify-content:flex-end;
+    }  
+  
+}
+.menuItem{
+  margin:auto;
+}
+hr.vonal{
+  border: 0.7px solid rgb(1, 111, 255);
+
+}
+
