@@ -14,7 +14,7 @@ $pictureIds=$pictures->kepList($conn);
 
 // default oldal
 $page = 'index';
-$search='';
+$search="";
 // kilépés végrehajtása
 
 
@@ -33,13 +33,11 @@ else {
 
 $category="";
 $title='';
-
 // router
 if(isset($_REQUEST['searched'])){
         
         $search=$_REQUEST['searched'];
         $page = "searchedUser"; 
-        $category=$_REQUEST['searched'];
 }
 elseif(isset($_REQUEST['page'])) {
         if(file_exists('controller/'.$_REQUEST['page'].'.php')) {
@@ -48,10 +46,6 @@ elseif(isset($_REQUEST['page'])) {
 }elseif(isset($_REQUEST['category'])){
 
                 $category=$_REQUEST['category'];
-
-}elseif(isset($_REQUEST['upvote'])){
-
-        
 
 }
         
