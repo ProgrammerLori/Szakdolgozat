@@ -64,7 +64,7 @@ if ($pictureIds) {
                     echo 
                     '<form action="index.php?=vote" method="post" id="absolut">
                     
-                        <input type="submit" class="fel" name="upvote" onvalue>
+                        <input type="submit" class="fel" name="upvote" value>
                         '.$i.'
                         
                         <span class="centi"> vagy</span>
