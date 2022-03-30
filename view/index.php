@@ -67,13 +67,32 @@ if ($pictureIds) {
                         <input type="submit" class="fel" name="upvote" value>
                         '.$i.'
                         
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
                         <span class="centi"> vagy</span>
                         <input type="submit" class="le" name="downvote" value>
                         <input type="hidden" value="'.$pictureId.'" name="voteid">
                         
+<<<<<<< Updated upstream
                         '.$j.'
                     </form>
                     <?php
+=======
+                        '.$j.'';
+                        
+                        $sql="SELECT users_id FROM favourite WHERE favorited_picture_id=".$pictureId." and users_id=".$_SESSION['users_id']." ";
+                        if(!$result = $conn->query($sql)) echo $conn->error;
+                        if($result->num_rows > 0){
+                            echo'<input type="submit" class="onfav" name="fav"  value>';
+                        }else{
+                            echo'<input type="submit" class="nofav" name="fav"  value>';
+                        }
+                        echo'
+                    </form>
+                   
+>>>>>>> Stashed changes
                     
                     
                     </span>
@@ -87,6 +106,7 @@ if ($pictureIds) {
             if($pictures->get_category()!="Profilkep"){
                 $i=0;
                 $j=0;
+<<<<<<< Updated upstream
                    $sql="SELECT users_id FROM likes WHERE vote = 0 and liked_pic_id='".$pictureId."'";
                    if(!$result = $conn->query($sql)) echo $conn->error;
                    if($result->num_rows > 0){
@@ -99,6 +119,20 @@ if ($pictureIds) {
                    if($result->num_rows > 0){
                     foreach($result->fetch_assoc() as $row){
                         $j++;
+=======
+                   $sql="SELECT COUNT(users_id) FROM likes WHERE vote = 0 and liked_pic_id='".$pictureId."'";
+                   if(!$result = $conn->query($sql)) echo $conn->error;
+                   if($result->num_rows > 0){
+                    foreach($result->fetch_assoc() as $row){
+                        $i=$row;
+                       }
+                    } 
+                    $sql="SELECT  COUNT(users_id) FROM likes WHERE vote = 1 and liked_pic_id='".$pictureId."'";
+                   if(!$result = $conn->query($sql)) echo $conn->error;
+                   if($result->num_rows > 0){
+                    foreach($result->fetch_assoc() as $row){
+                        $j=$row;
+>>>>>>> Stashed changes
                        }
                     } 
                 echo 
@@ -117,6 +151,10 @@ if ($pictureIds) {
                         <input type="submit" class="le" name="downvote" value>
                         <input type="hidden" value="'.$pictureId.'" name="voteid">
                         '.$j.'
+<<<<<<< Updated upstream
+=======
+                        <input type="submit" class="fav" name="fav" value>
+>>>>>>> Stashed changes
                     </form>
                     <?php
                     
@@ -145,6 +183,14 @@ echo"</div>";
           document.getElementById("mySidenav").style.width = "0%";
           document.getElementById("oldalsav").style.display="inline";
           document.getElementById("flex-con").style.margin="0 auto 0 auto";
+<<<<<<< Updated upstream
+=======
+        }
+        function favo() {
+          document.getElementById("fav").style.backgroundImage = "url(../pictures/onfav.png)";
+
+          
+>>>>>>> Stashed changes
         }
       </script>
-      <script>
+      

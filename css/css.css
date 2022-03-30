@@ -42,6 +42,13 @@ body{
   color:red;
   display: flex;
   flex-basis: 30%;
+<<<<<<< Updated upstream
+  
+  align-items:center;
+  justify-content:space-evenly;
+  
+  
+=======
   
   align-items:center;
   justify-content:space-evenly;
@@ -50,6 +57,7 @@ body{
 
 }
 
+>>>>>>> Stashed changes
 
 .p_keret{
   margin:auto;
@@ -65,6 +73,23 @@ body{
 }
 
 
+<<<<<<< Updated upstream
+.p_keret{
+  margin:auto;
+  border: solid 2px grey;
+  margin: 1%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  background-color: rgb(255, 255, 0);
+  color:red;
+  display: flex;
+  align-items: center;
+  display: block;
+}
+
+
+=======
+>>>>>>> Stashed changes
 
 
 
@@ -76,6 +101,14 @@ body{
     z-index: 1030 !important;
     
   }   
+<<<<<<< Updated upstream
+
+.fel{
+  background-image: url("../pictures/like.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+=======
 
 .fel{
   background-image: url("../pictures/like.png");
@@ -103,6 +136,7 @@ body{
   background-repeat: no-repeat;
   background-size: contain;
   
+>>>>>>> Stashed changes
   min-width: 3rem;
   min-height: 3rem;
   background-color: black;
@@ -111,7 +145,52 @@ body{
   border-radius: 100%;
   
   
+<<<<<<< Updated upstream
+ 
+  
 }
+.centi{
+  margin:0 5% 0 5%;
+}
+
+.le{
+  background-image: url("../pictures/dislike.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  
+  min-width: 3rem;
+  min-height: 3rem;
+  background-color: black;
+  border: none;
+  
+  border-radius: 100%;
+  
+  
+=======
+}
+.nofav{
+  
+  background-image: url("../pictures/nofav.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-width: 3rem;
+  min-height: 3rem;
+  border: none;
+}
+.onfav{
+  
+  background-image: url("../pictures/onfav.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-width: 3rem;
+  min-height: 3rem;
+  border: none;
+>>>>>>> Stashed changes
+}
+
 select{ background: #28a745;
         border:none;
 }
@@ -158,6 +237,12 @@ padding-top: 60px;
     margin:auto;
 
   }
+<<<<<<< Updated upstream
+=======
+  .kozepp{
+    padding: auto;
+  }
+>>>>>>> Stashed changes
   #oldalsav{
     margin-top: 200px;
   }
@@ -199,3 +284,7 @@ hr.vonal{
 
 }
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
