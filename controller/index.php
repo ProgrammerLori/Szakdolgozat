@@ -1,15 +1,11 @@
 <?php
 // Gombnyomásra belép
-<<<<<<< Updated upstream
-=======
 if(isset($_POST['fav'])){
     $sql = "SELECT users_id FROM favourite WHERE favorited_picture_id=".$_POST['voteid']." and users_id=".$_SESSION['users_id']."";
     if(!$result = $conn->query($sql)) echo $conn->error;
     if($result->num_rows > 0){
-
         $sql = "DELETE FROM favourite WHERE favorited_picture_id=".$_POST['voteid']." and users_id=".$_SESSION['users_id']."";
         if ($conn->query($sql) === TRUE) {
-            header('Location: index.php?page=index');
         } else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
             }
@@ -17,14 +13,13 @@ if(isset($_POST['fav'])){
         $sql = "INSERT INTO favourite (users_id,favorited_picture_id)
             VALUES ('".$_SESSION['users_id']."','".($_POST['voteid'])."')";
              if ($conn->query($sql) === TRUE) {
-                header('Location: index.php?page=index');
+                
             } else {
                     echo "Error: " . $sql . "<br>" . $conn->error;
                 }
     }
 }
 
->>>>>>> Stashed changes
 if(isset($_POST['upvote'])){
     // Megnézi hogy ez a felhasználó upvoteolta-e már ezt a képet
     $sql = "SELECT users_id FROM likes WHERE vote = 0 and liked_pic_id=".$_POST['voteid']." and users_id=".$_SESSION['users_id']."";
@@ -33,11 +28,7 @@ if(isset($_POST['upvote'])){
     if(!$result->num_rows > 0){
         $sql = "SELECT users_id FROM likes WHERE vote = 1 and liked_pic_id=".$_POST['voteid']." and users_id=".$_SESSION['users_id']."";
         if(!$result = $conn->query($sql)) echo $conn->error;
-<<<<<<< Updated upstream
-        // ha igen kitörli
-=======
         // ha igen updateli
->>>>>>> Stashed changes
         if($result->num_rows > 0){
             $sql = "UPDATE  likes SET vote=0 WHERE vote = 1 and users_id=".$_SESSION['users_id']." and liked_pic_id= ".$_POST['voteid']."";
             

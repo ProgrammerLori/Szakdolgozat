@@ -1,29 +1,40 @@
 
     <?php
-    if(isset($_POST['fav'])){
-        $sql = "SELECT users_id FROM favourite WHERE favorited_picture_id=".$_POST['voteid']." and users_id=".$_SESSION['users_id']."";
-        if(!$result = $conn->query($sql)) echo $conn->error;
-        if($result->num_rows > 0){
-    
-            $sql = "DELETE FROM favourite WHERE favorited_picture_id=".$_POST['voteid']." and users_id=".$_SESSION['users_id']."";
-            if ($conn->query($sql) === TRUE) {
-                header('Location: index.php?page=index');
-            } else {
-                    echo "Error: " . $sql . "<br>" . $conn->error;
-                }
-        }else{
-            $sql = "INSERT INTO favourite (users_id,favorited_picture_id)
-                VALUES ('".$_SESSION['users_id']."','".($_POST['voteid'])."')";
-                 if ($conn->query($sql) === TRUE) {
-                    header('Location: index.php?page=index');
-                } else {
-                        echo "Error: " . $sql . "<br>" . $conn->error;
-                    }
-        }
-    }
     if (empty($_SESSION['users_id'])) {
         header('Location: index.php?page=index');
     }
+  if (isset($_POST['del'])) {
+    
+    $sql="SELECT picture_name FROM pictures WHERE picture_id=".$_POST['voteid']." and users_id=".$_SESSION['users_id']."";
+    if(!$result = $conn->query($sql)) echo $conn->error;
+    if($result->num_rows > 0){
+        if($row = $result->fetch_assoc()) {
+            unlink($row['picture_name']);
+        }
+    }
+    
+    if($result->num_rows > 0){
+        $sql ="DELETE FROM pictures WHERE picture_id=".$_POST['voteid']." and users_id=".$_SESSION['users_id']."";
+        if(!$result = $conn->query($sql)) echo $conn->error;
+    }
+     
+  }
+    if(isset($_POST['fav'])){
+        $sql = "SELECT favorited_picture_id FROM favourite WHERE favorited_picture_id=".$_POST['voteid']." and users_id=".$_SESSION['users_id']."";
+        if(!$result = $conn->query($sql)) echo $conn->error;
+        if($result->num_rows > 0){
+            
+    
+            $sql = "DELETE FROM favourite WHERE favorited_picture_id=".$_POST['voteid']." and users_id=".$_SESSION['users_id']."";
+            if ($conn->query($sql) === TRUE) {
+                
+            } else {
+                    echo "Error: " . $sql . "<br>" . $conn->error;
+                }
+        }
+        
+    }
+    
     $i= 0;
     $errors=array();
     $target_dir = "pictures/";
@@ -46,10 +57,6 @@
     }
     
     
-<<<<<<< Updated upstream
-=======
-    
->>>>>>> Stashed changes
     if(isset($_POST['profilepicbutton'])){
         
         $name=$_FILES["profilepic"]['name'];
@@ -109,12 +116,6 @@
             }
         }$errors[$key][]="Nincs fájl kiválasztva";
     }
-<<<<<<< Updated upstream
-=======
-
-
-
->>>>>>> Stashed changes
     include 'view/profile.php';
 
     ?>
