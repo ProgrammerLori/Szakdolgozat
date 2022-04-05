@@ -6,7 +6,7 @@ if(isset($_POST['username']) and isset($_POST['passw'])) {
 	if(strlen($_POST['username']) == 0) $loginError .= "Nem írtál be felhasználónevet<br>";
 	if(strlen($_POST['passw']) == 0) $loginError .= "Nem írtál be jelszót<br>";
 	if($loginError == '') {
-		$sql = "SELECT users_id FROM users WHERE username = '".mysqli_real_escape_string($conn,$_POST['username'])."' ";
+		$sql = "SELECT users_id FROM users WHERE username = '".htmlspecialchars(mysqli_real_escape_string($conn,$_POST['username']))."' ";
 		if(!$result = $conn->query($sql)) echo $conn->error;
 		if ($result->num_rows > 0) {
 			if($row = $result->fetch_assoc()) {

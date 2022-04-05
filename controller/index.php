@@ -1,5 +1,5 @@
 <?php
-// Gombnyomásra belép
+
 if(isset($_POST['fav'])){
     $sql = "SELECT users_id FROM favourite WHERE favorited_picture_id=".$_POST['voteid']." and users_id=".$_SESSION['users_id']."";
     if(!$result = $conn->query($sql)) echo $conn->error;
@@ -19,6 +19,19 @@ if(isset($_POST['fav'])){
                 }
     }
 }
+if (isset($_POST['del'])) {
+    $sql="SELECT picture_name FROM pictures WHERE picture_id=".$_POST['voteid'];
+    if(!$result = $conn->query($sql)) echo $conn->error;
+    if($result->num_rows > 0){
+        if($row = $result->fetch_assoc()) {
+            unlink($row['picture_name']);
+        }
+    }
+    $sql="DELETE FROM pictures WHERE picture_id=".$_POST['voteid'];
+    if(!$result = $conn->query($sql)) echo $conn->error;
+
+    
+  }
 
 if(isset($_POST['upvote'])){
     // Megnézi hogy ez a felhasználó upvoteolta-e már ezt a képet
@@ -42,7 +55,7 @@ if(isset($_POST['upvote'])){
             $sql = "INSERT INTO likes (users_id,liked_pic_id,vote)
             VALUES ('".$_SESSION['users_id']."','".($_POST['voteid'])."','0')";
              if ($conn->query($sql) === TRUE) {
-                header('Location: index.php?page=index');
+                header('Location: index.php?=vote&category='.$category.'');
             } else {
                     echo "Error: " . $sql . "<br>" . $conn->error;
                 }
@@ -54,7 +67,7 @@ if(isset($_POST['upvote'])){
         
         if(!$result = $conn->query($sql)) echo $conn->error;
             if ($conn->query($sql) === TRUE) {
-                header('Location: index.php?page=index');
+                header('index.php?=vote&category='.$category.'');
             } else {
                     echo "Error: " . $sql . "<br>" . $conn->error;
                 }
@@ -82,7 +95,7 @@ if(isset($_POST['downvote'])){
             $sql = "INSERT INTO likes (users_id,liked_pic_id,vote)
             VALUES ('".$_SESSION['users_id']."','".($_POST['voteid'])."','1')";
              if ($conn->query($sql) === TRUE) {
-                header('Location: index.php?page=index');
+                header('Location: index.php?=vote&category='.$category.'');
             } else {
                     echo "Error: " . $sql . "<br>" . $conn->error;
                 }
@@ -94,7 +107,7 @@ if(isset($_POST['downvote'])){
         
         if(!$result = $conn->query($sql)) echo $conn->error;
             if ($conn->query($sql) === TRUE) {
-                header('Location: index.php?page=index');
+                header('Location: index.php?=vote&category='.$category.'');
             } else {
                     echo "Error: " . $sql . "<br>" . $conn->error;
                 }

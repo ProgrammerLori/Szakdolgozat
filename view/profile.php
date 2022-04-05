@@ -43,11 +43,9 @@ if(isset($_POST['favpics'])){
                         echo'<form action="index.php?page=profile" method="post" id="absolut">';
                         if($rs->num_rows > 0){
                             echo'<input type="submit" class="onfav" name="fav"  value>';
+                            echo'<input type="hidden" name="favpics" >';
                             echo'<input type="hidden" value="'.$pictures->get_picture_id().'" name="voteid"></form>';
                             
-                        }else{
-                            echo'<input type="submit" class="nofav" name="fav"  value>';
-                            echo'<input type="hidden" value="'.$pictures->get_picture_id().'" name="voteid"></form>';
                         }
                         echo "</div>";
                     }
@@ -74,7 +72,10 @@ if ($pictureIds) {
             
                 if($pictures->get_category()!="Profilkep"){
                     if ($pictures->get_users_id()==$_SESSION['users_id']) {
-                        echo '<div class="keret"><span><img class="kepek" src="'.$pictures->get_picture_name().'"><span>'.$pictures->get_category().'<form action="index.php?page=profile" method="post"><input type="hidden" value="'.$pictures->get_picture_id().'" name="voteid"><input type="submit"  name="del"  value="Törlés"></form></span></span></div>';
+                        echo '<div class="keret"><span><img class="kepek" src="'.$pictures->get_picture_name().'"><span>'.$pictures->get_category().'
+                        <form action="index.php?page=profile" method="post">
+                        <input type="hidden" value="'.$pictures->get_picture_id().'" name="voteid">
+                        <input type="submit"  name="del"  value="Törlés"></form></span></span></div>';
                     }
         }
         

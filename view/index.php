@@ -61,7 +61,7 @@ if ($pictureIds) {
                 '<div class="keret">
                     <span><img class="kepek" src="'.$pictures->get_picture_name().'">
                     <span>Kategória:<br> <b><a href="index.php?category='.$pictures->get_cat_id().'">'.$pictures->get_category().'</a></b></span><br>
-                    <span>Feltöltötte: <a href="index.php?page=searchedUser&searched='.$pictures->get_username().'">'.$pictures->get_username().'</a></span>';
+                    <span>Feltöltötte: <a href="index.php?page=searchedUser&searched='.$pictures->get_username().'">'.$pictures->get_username().'</a></span><br>';
                 if (!empty($_SESSION['users_id'])) {
                     echo 
                     '<form action="index.php?=vote" method="post" id="absolut">
@@ -78,15 +78,22 @@ if ($pictureIds) {
                         $sql="SELECT users_id FROM favourite WHERE favorited_picture_id=".$pictureId." and users_id=".$_SESSION['users_id']." ";
                         if(!$result = $conn->query($sql)) echo $conn->error;
                         if($result->num_rows > 0){
-                            echo'<input type="submit" class="onfav" name="fav" onclick="favno(this.value)" value>';
+                            echo'<input type="submit" class="onfav" name="fav" onclick="favno(this.value)" value></form>';
                         }else{
-                            echo'<input type="submit" class="nofav" name="fav" onclick="favo(this.value)"  value>';
+                            echo'<input type="submit" class="nofav" name="fav" onclick="favo(this.value)"  value></form>';
                         }
-                        echo'
-                    </form>
-                   
-                    
-                    
+
+                        $sql="SELECT users_id FROM admins WHERE users_id='".$_SESSION['users_id']."'";
+                        if(!$result = $conn->query($sql)) echo $conn->error;
+                        if($result->num_rows > 0){
+                                        echo'
+                                    
+                                    <form action="index.php?page=index" method="post">
+                                    <input type="submit"  name="del"  value="Törlés">
+                                    <input type="hidden" value="'.$pictureId.'" name="voteide">
+                                    </form>';
+                        }
+                    echo'
                     </span>
                 </div>';
                 }   
@@ -116,23 +123,38 @@ if ($pictureIds) {
                 '<div class="keret">
                     <span><img class="kepek" src="'.$pictures->get_picture_name().'">
                     <span>Kategória:<br> <b><a href="index.php?category='.$pictures->get_cat_id().'">'.$pictures->get_category().'</a></b></span><br>
-                    <span>Feltöltötte: <a href="index.php?page=searchedUser&searched='.$pictures->get_username().'">'.$pictures->get_username().'</a></span>';
+                    <span>Feltöltötte: <a href="index.php?page=searchedUser&searched='.$pictures->get_username().'">'.$pictures->get_username().'</a></span><br>';
                 if (!empty($_SESSION['users_id'])) {
                     echo 
-                    '<form action="index.php?=vote" method="post" id="absolut">
+                    '<form action="index.php?=vote&category='.$category.'" method="post" id="absolut">
                     
                         <input type="submit" class="fel" name="upvote" value>
                         '.$i.'
                        
                         <span class="centi"> vagy</span>
+
                         <input type="submit" class="le" name="downvote" value>
+
                         <input type="hidden" value="'.$pictureId.'" name="voteid">
-                        '.$j.'
-                        
-                    </form>
-                    <form  method="post" id="absolut"></form>
-                    <?php
-                    
+                        '.$j.'';
+                        $sql="SELECT users_id FROM favourite WHERE favorited_picture_id=".$pictureId." and users_id=".$_SESSION['users_id']." ";
+                        if(!$result = $conn->query($sql)) echo $conn->error;
+                        if($result->num_rows > 0){
+                            echo'<input type="submit" class="onfav" name="fav" onclick="favno(this.value)" value></form>';
+                        }else{
+                            echo'<input type="submit" class="nofav" name="fav" onclick="favo(this.value)"  value></form>';
+                        }
+                        echo'
+                    </form>';
+                    $sql="SELECT users_id FROM admins WHERE users_id='".$_SESSION['users_id']."'";
+                    if(!$result = $conn->query($sql)) echo $conn->error;
+                    if($result->num_rows > 0){
+                   echo'<form action="index.php?page=index" method="post"> 
+                   <input type="submit"  name="del"  value="Törlés">
+                   <input type="hidden" value="'.$pictureId.'" name="voteide">
+                    </form>';
+                    }
+                    echo'
                     
                     </span>
                 </div>';

@@ -10,13 +10,13 @@ echo $loginError;
     <?php
 echo "<h2>Regisztráció</h2>"
 ?>
-							Felhasználó:<br><input type="text" name="username">
+							Felhasználó:<br><input type="text" pattern="[A-Za-z0-9\_\ ]{1,20}" name="username">
 							<br>
 							Jelszó: <br><input type="password" name="passw" id="passw">
 							<br>
 							Jelszó ismét: <br><input type="password" name="passw1" id="passw1">
 							<br>
-							E-mail: <br><input type="text" name="email">
+							E-mail: <br><input type="email" name="email">
 							<br>
 							<span id = "message" > </span>
 							Neme:<br><input type="radio" name="gender" value="0">Férfi<br><input type="radio" name="gender"value="1">Nő

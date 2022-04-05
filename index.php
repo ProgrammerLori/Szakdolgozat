@@ -66,8 +66,9 @@ if(empty($_SESSION["users_id"])){
 else{
                 $menupontok = array(    'index' => "Főoldal", 
                                         'profile'=> $fo,
-                                        $action => $szoveg,
-                                        'upload'=>"Feltöltés"
+                                       
+                                        'upload'=>"Feltöltés",
+                                        $action => $szoveg
                         
                         
                 );

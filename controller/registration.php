@@ -13,7 +13,7 @@ if(isset($_POST['username']) and isset($_POST['passw'])and isset($_POST['email']
  
   if($_POST['passw']!=$_POST['passw1'])$loginError .= "Nem egyeznek a jelszavak<br>";
 	
-
+  if(strlen($_POST['username']) >= 20)$loginError .= "Túl hosszú a név";
 	if($loginError == '') {
 		
     $un = mysqli_query($conn, "SELECT username FROM users WHERE username = '".$_POST['username']."'");
@@ -25,7 +25,7 @@ if(isset($_POST['username']) and isset($_POST['passw'])and isset($_POST['email']
       exit('This email is already registered');
     }else{
       $sql = "INSERT INTO users (username,pw,email,gender)
-      VALUES ('".mysqli_real_escape_string($conn,$_POST['username'])."','".md5($_POST['passw'])."','".mysqli_real_escape_string($conn,$_POST['email'])."','".mysqli_real_escape_string($conn,$_POST['gender'])."')";
+      VALUES ('".htmlspecialchars(mysqli_real_escape_string($conn,$_POST['username']))."','".md5($_POST['passw'])."','".htmlspecialchars(mysqli_real_escape_string($conn,$_POST['email']))."','".htmlspecialchars(mysqli_real_escape_string($conn,$_POST['gender']))."')";
 
     if ($conn->query($sql) === TRUE) {
         echo "Sikeres regisztráció ";
