@@ -61,7 +61,7 @@ if ($pictureIds) {
                 '<div class="keret glam">
                     <span><img alt="'.$pictures->get_picture_name().'" class="kepek " src="'.$pictures->get_picture_name().'">
                     <span>Kategória:<br> <b><a href="index.php?category='.$pictures->get_cat_id().'">'.$pictures->get_category().'</a></b></span><br>
-                    <span>Feltöltötte: <a href="index.php?page=searchedUser&searched='.$pictures->get_username().'">'.$pictures->get_username().'</a></span>';
+                    <span>Feltöltötte: <a href="index.php?page=searchedUser&searched='.$pictures->get_username().'">'.$pictures->get_username().'</a></span><br>';
                 if (!empty($_SESSION['users_id'])) {
                     echo 
                     '<form action="index.php?=vote" method="post" id="absolut">
@@ -123,7 +123,7 @@ if ($pictureIds) {
                 '<div class="keret glam">
                     <span><img alt="'.$pictures->get_picture_name().'" class="kepek " src="'.$pictures->get_picture_name().'">
                     <span>Kategória:<br> <b><a href="index.php?category='.$pictures->get_cat_id().'">'.$pictures->get_category().'</a></b></span><br>
-                    <span>Feltöltötte: <a href="index.php?page=searchedUser&searched='.$pictures->get_username().'">'.$pictures->get_username().'</a></span>';
+                    <span>Feltöltötte: <a href="index.php?page=searchedUser&searched='.$pictures->get_username().'">'.$pictures->get_username().'</a></span><br>';
                 if (!empty($_SESSION['users_id'])) {
                     echo 
                     '<form action="index.php?=vote&category='.$category.'" method="post" id="absolut">

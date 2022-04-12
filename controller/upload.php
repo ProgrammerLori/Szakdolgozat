@@ -12,6 +12,32 @@ $allowed_filetypes=array('image/png','image/jpg','image/jpeg');
 
 if(isset($_POST['submit'])  ){
     if($_POST['cat']!="defaultcategory"){
+if (isset($_POST['catsub']) and isset($_POST['categ'])) {
+    $sql = "SELECT category FROM cat WHERE category = '".$_POST['categ']."'";
+    if(!$result = $conn->query($sql)) echo $conn->error;
+    if ($result->num_rows > 0) {
+        echo"Ilyen kategória már létezik";
+    }else{
+        $sql="INSERT INTO cat (category)
+        VALUES ('".$_POST['categ']."')";
+        if ($conn->query($sql) === TRUE) {
+                                
+            header('Location: index.php?page=upload');
+
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+    }
+}else echo '';
+
+if (isset($_POST['delcategory'])) {
+    $sql="DELETE FROM cat WHERE cat_id='".$_POST['delcat']."'";
+    if(!$result = $conn->query($sql)) echo $conn->error;
+    
+}
+
+if(isset($_POST['submit'])){
+  
     if (isset($_FILES["fileToUpload"]['name'][0])) { 
         foreach($_FILES["fileToUpload"]["name"] as $key=>$name ){
             echo $name."<br>";

@@ -20,7 +20,7 @@
 							<br>
 							Jelszó ismét: <br><input type="password" name="password1" id="password1" required>
 							<br>
-							E-mail: <br><input type="email" name="email">
+							E-mail: <br><input type="email" name="email" required>
 							<br>
 							<span id = "message" > </span>
 							Neme:<br><input type="radio" name="gender" value="0">Férfi<br><input type="radio" name="gender" value="1">Nő
