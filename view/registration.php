@@ -5,12 +5,12 @@
 ?>
 
 
-
+<div class="middle">
 <form action="index.php?page=registration" method="post" >
 	
 <?php
 	
-	echo'<div class="middle">';
+	
 	echo $registrationError;
 	echo "<h2>Regisztráció</h2>"
 ?>

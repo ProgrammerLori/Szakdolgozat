@@ -6,7 +6,7 @@ if (isset($_POST['userdel'])) {
        $sql="DELETE FROM users WHERE users_id = ".$_SESSION['searched_user_id'];
         if(!$result = $conn->query($sql)) echo $conn->error;
     }
-  }
+}
 if (isset($_POST['del'])) {
     $sql="SELECT picture_name FROM pictures WHERE picture_id=".$_POST['voteid'];
     if(!$result = $conn->query($sql)) echo $conn->error;
@@ -16,10 +16,9 @@ if (isset($_POST['del'])) {
         }
     }
     $sql="DELETE FROM pictures WHERE picture_id=".$_POST['voteid'];
-    if(!$result = $conn->query($sql)) echo $conn->error;
+    if(!$result = $conn->query($sql)) echo $conn->error; 
+}
 
-    
-  }
 $_SESSION['searched_user_id']="";
 $sql = "SELECT users_id FROM users WHERE username = '".$search."'";
 
