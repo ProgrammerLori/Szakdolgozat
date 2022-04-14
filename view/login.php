@@ -1,15 +1,15 @@
 	<?php
-		if(empty($_SESSION["users_id"])) {
-
-			if(isset($_POST['username'])) {
+		
+				
+			
+				echo'<div class="middle">';
 				echo $loginError;
-			}
-				else echo "<h2>Belépés</h2>";
+			 echo "<h2>Belépés</h2>";
 				?>
 		<form action="index.php?page=login" method="post">
 			Felhasználónév:<br><input type="text" name="username">
 			<br>
-			Jelszó: <br><input type="password" name="passw">
+			Jelszó: <br><input type="password" name="password">
 			
 			<br>
 			<a href="index.php?page=registration"> <?php echo"Még nincs felhasználód? Regisztrálj!"?></a>
@@ -18,10 +18,8 @@
 			<input type="submit">
 			
 		</form>
-		
-	<?php						
-		}
-	?>					
+</div>
+						
 				
 
         
