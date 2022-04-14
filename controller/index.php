@@ -16,7 +16,7 @@ if(isset($_POST['fav'])){
                 
             } else {
                     echo "Error: " . $sql . "<br>" . $conn->error;
-                }
+            }
     }
 }
 if (isset($_POST['del'])) {
@@ -59,7 +59,7 @@ if(isset($_POST['upvote'])){
                 header('Location: index.php?=vote&category='.$category.'');
             } else {
                     echo "Error: " . $sql . "<br>" . $conn->error;
-                }
+            }
         }
 
     }else{
@@ -88,7 +88,7 @@ if(isset($_POST['downvote'])){
             if ($conn->query($sql) === TRUE) {
             } else {
                     echo "Error: " . $sql . "<br>" . $conn->error;
-                }
+            }
             //utána beszúrja az adatbázisba
         }else{
             $sql = "INSERT INTO likes (users_id,liked_pic_id,vote)
@@ -97,19 +97,17 @@ if(isset($_POST['downvote'])){
                 header('Location: index.php?=vote&category='.$category.'');
             } else {
                     echo "Error: " . $sql . "<br>" . $conn->error;
-                }
+            }
         }
 
     }else{
         $sql = "DELETE FROM likes WHERE vote = 1 and users_id=".$_SESSION['users_id']." and liked_pic_id= ".$_POST['selected_picture_id']."";
-        
-        
         if(!$result = $conn->query($sql)) echo $conn->error;
             if ($conn->query($sql) === TRUE) {
                 header('Location: index.php?=vote&category='.$category.'');
             } else {
                     echo "Error: " . $sql . "<br>" . $conn->error;
-                }
+            }
      }
     
 }
