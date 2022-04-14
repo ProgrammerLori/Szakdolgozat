@@ -8,13 +8,15 @@ if ($errors) {
         }
     }
 }
-echo'<img id="profilkep" src="'.$_SESSION['picture_name'].'"><br>';?>
-
+echo'<div class="middle">';
+echo'<div class="bordering">';
+echo'<img id="profilepicture" src="'.$_SESSION['picture_name'].'"><br>';?>
+</div>
 <form action="index.php?page=profile" method="POST" enctype="multipart/form-data">
-        Profilkép megváltoztatása:
-        <input type="file" name="profilepic" id="profilepic" >
+        Profilkép megváltoztatása:<br>
+        <input type="file" name="profilepicture" " >
         <br>
-        <input type="submit" name="profilepicbutton">
+        <input type="submit" name="profilepicturebutton">
         
 </form>
 <?php
@@ -23,8 +25,11 @@ echo "E-mail: ".$_SESSION["email"]."<br>";
 if ($_SESSION["gender"]==0) {
     echo "Nem: Férfi";
 }else echo "Nem: Nő";
+
 ?>
+
 <form action="index.php?page=profile" method="POST"><input type="submit" value="Feltöltött képek" name="mypics"><input type="submit" value="Kedvenc képeim" name="favpics"> </form>
+</div>
 <?php
 
 if(isset($_POST['favpics'])){
@@ -43,11 +48,9 @@ if(isset($_POST['favpics'])){
                         echo'<form action="index.php?page=profile" method="post" id="absolut">';
                         if($rs->num_rows > 0){
                             echo'<input type="submit" class="onfav" name="fav"  value>';
-                            echo'<input type="hidden" value="'.$pictures->get_picture_id().'" name="voteid"></form>';
+                            echo'<input type="hidden" name="favpics" >';
+                            echo'<input type="hidden" value="'.$pictures->get_picture_id().'" name="selected_picture_id"></form>';
                             
-                        }else{
-                            echo'<input type="submit" class="nofav" name="fav"  value>';
-                            echo'<input type="hidden" value="'.$pictures->get_picture_id().'" name="voteid"></form>';
                         }
                         echo "</div>";
                     }
@@ -74,7 +77,10 @@ if ($pictureIds) {
             
                 if($pictures->get_category()!="Profilkep"){
                     if ($pictures->get_users_id()==$_SESSION['users_id']) {
-                        echo '<div class="keret"><span><img class="kepek" src="'.$pictures->get_picture_name().'"><span>'.$pictures->get_category().'<form action="index.php?page=profile" method="post"><input type="hidden" value="'.$pictures->get_picture_id().'" name="voteid"><input type="submit"  name="del"  value="Törlés"></form></span></span></div>';
+                        echo '<div class="keret"><span><img class="kepek" src="'.$pictures->get_picture_name().'"><span>'.$pictures->get_category().'
+                        <form action="index.php?page=profile" method="post">
+                        <input type="hidden" value="'.$pictures->get_picture_id().'" name="selected_picture_id">
+                        <input type="submit"  name="del"  value="Törlés"></form></span></span></div>';
                     }
         }
         
