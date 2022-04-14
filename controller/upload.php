@@ -35,6 +35,12 @@ if(isset($_POST['submit'])  ){
                 }
                     
             }
+        }else echo '';
+
+        if (isset($_POST['delcategory'])) {
+            $sql="DELETE FROM cat WHERE cat_id='".$_POST['delcat']."'";
+            if(!$result = $conn->query($sql)) echo $conn->error;
+            
         }
     }else $errors[$key][]="Nincs fájl kiválasztva";
     
@@ -43,6 +49,6 @@ if(isset($_POST['submit'])  ){
 }
 
 
-    
+
 include "view/upload.php"
 ?>
