@@ -1,6 +1,6 @@
 
-    <?php
-    if (empty($_SESSION['users_id'])) {
+<?php
+if (empty($_SESSION['users_id'])) {
         header('Location: index.php?page=index');
     }
   if (isset($_POST['del'])) {
@@ -12,7 +12,7 @@
             unlink($row['picture_name']);
         }
     }
-    
+
     if($result->num_rows > 0){
         $sql ="DELETE FROM pictures WHERE picture_id=".$_POST['selected_picture_id']." and users_id=".$_SESSION['users_id']."";
         if(!$result = $conn->query($sql)) echo $conn->error;
@@ -35,26 +35,23 @@
         
     }
     
-    $i= 0;
-    $errors=array();
-    $target_dir = "pictures/";
-    $allowed_filetypes=array('image/png','image/jpg','image/jpeg');
+}
 
-    $sql = "SELECT picture_id FROM profile_pics WHERE users_id = '".$_SESSION['users_id']."'";
-
+if(isset($_POST['fav'])){
+    $sql = "SELECT favorited_picture_id FROM favourite WHERE favorited_picture_id=".$_POST['selected_picture_id']." and users_id=".$_SESSION['users_id']."";
     if(!$result = $conn->query($sql)) echo $conn->error;
-
-    if ($result->num_rows > 0) {
+    if($result->num_rows > 0){
         
 
-        if($row = $result->fetch_assoc()) {
-            $p_photo -> set_photo($row['picture_id'], $conn);
+        $sql = "DELETE FROM favourite WHERE favorited_picture_id=".$_POST['selected_picture_id']." and users_id=".$_SESSION['users_id']."";
+        if ($conn->query($sql) === TRUE) {
             
-                $_SESSION['picture_id'] = $row['picture_id'];
-                $_SESSION['picture_name'] = $p_photo->get_picture_name();
-
-        }
+        } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
     }
+        
+}
     
     
     if(isset($_POST['profilepicturebutton'])){
@@ -80,7 +77,6 @@
                 }
                 $sql="SELECT picture_id FROM pictures WHERE users_id='".$_SESSION['users_id']."' AND picture_name ='".$target_file."'";
                 if(!$result = $conn->query($sql)) echo $conn->error;
-
                 if ($result->num_rows > 0) {
                     if($row = $result->fetch_assoc()) {
                         $p_photo -> set_photo($row['picture_id'], $conn);
@@ -89,15 +85,6 @@
 
                     }
                 }
-
-                $sql = "SELECT picture_id FROM profile_pics WHERE users_id = '".$_SESSION['users_id']."'";
-
-                if(!$result = $conn->query($sql)) echo $conn->error;
-
-                if(!$result->num_rows > 0){
-
-                    $sql = "INSERT INTO profile_pics (users_id,picture_id)
-                        VALUES ('".$_SESSION['users_id']."','".$_SESSION['picture_id']."')";
 
                     if ($conn->query($sql) === TRUE) {
                         $_SESSION['success']="Sikeres profilkép változtatás";
@@ -117,7 +104,7 @@
                 }
             }
         }else $errors[$key][]="Nincs fájl kiválasztva";
-    }
+    
     include 'view/profile.php';
 
-    ?>
+?>

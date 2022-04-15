@@ -4,7 +4,6 @@ if (empty($_SESSION['users_id'])) {
     header('Location: index.php?page=index');
 }
 
-
 $i= 0;
 $errors=array();
 $target_dir = "pictures/";
@@ -46,6 +45,5 @@ if(isset($_POST['submit'])  ){
 }
 
 
-    
 include "view/upload.php"
 ?>

@@ -18,9 +18,8 @@
                     }
                 }
             }
-        }
-        
-    ?>
+            
+        ?>
     </div>
 </div> 
 
@@ -31,8 +30,6 @@
 	echo"<div class='flex-container' id='flex-con'>";
    
     
-    
-
 if ($pictureIds) {
    
     foreach($pictureIds as $pictureId) {

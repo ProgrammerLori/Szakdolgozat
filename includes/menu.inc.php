@@ -7,17 +7,13 @@
   </button>
   <div class="collapse navbar-collapse " id="navbarNav">
     <ul class="navbar-nav nav-pills">
-    
       <?php
-      
         foreach($menupontok as $key => $value) {
             $active = '';
             if(isset($_REQUEST['page']) and $_REQUEST['page'] == $key) $active = 'active';
-
             if($key == 'felhasznalo') $key.='&action='.$action;
             ?><li class="nav-item ">
             <a class="nav-link  text-danger <?php echo $active; ?> " href="index.php?page=<?php echo $key; ?>"><?php echo $value; ?></a> </li>           
-        
         <?php 
         }
         ?>

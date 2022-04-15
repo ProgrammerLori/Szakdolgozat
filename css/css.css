@@ -1,11 +1,13 @@
 
 
 body{
-  background-color:rgb(92, 87, 80) !important;
+    background-color:rgb(92, 87, 80) !important;
+
 }
 
 #kep{
     border-radius: 100%;
+
 }
 #profilepicture{
     width:70px;
@@ -17,51 +19,49 @@ body{
   color: #ffffff;
 }
 .flex-container{
-  display: flex;
-  flex-wrap: wrap;
-  text-align: center;
-  width: 80%;
-  margin: auto;
-  justify-content:center;
-  
-  
-  
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    width: 80%;
+    margin: auto;
+    justify-content:center;
 }
+
 .kepek{
-  max-height: 20em;
-  max-width:100%;
-  margin: auto auto 5% auto;
-  display: block;
-  border-radius: 20px;
-  border: solid 2px grey;
-  background-color: rgb(255, 255, 0,0.1);
+    max-height: 20em;
+    max-width:100%;
+    margin: auto auto 5% auto;
+    display: block;
+    border-radius: 20px;
+    border: solid 2px grey;
+    background-color: rgb(255, 255, 0,0.1);
   
 }
 
 .glam{
-background-color:  rgb(206, 194, 180) !important;
+    background-color:  rgb(206, 194, 180) !important;
+
 }
+
 .keret{
-  max-height: 40rem;
-  
-  margin: auto;
-  border: solid 2px grey;
-  margin: 1%;
-  padding: 4% 2% 3% 2%;
-  background-color: rgb(207, 164, 123);
-  color:red;
-  display: flex;
-  flex-basis: 30%;
-  
-  align-items:center;
-  justify-content:space-evenly;
-  border-radius: 30px;
-
-  
+    max-height: 40rem;
+    margin: auto;
+    border: solid 2px grey;
+    margin: 1%;
+    padding: 4% 2% 3% 2%;
+    background-color: rgb(207, 164, 123);
+    color:red;
+    display: flex;
+    flex-basis: 30%;
+    align-items:center;
+    justify-content:space-evenly;
+    border-radius: 30px;
 
 }
+
 .nav-link.text-danger.active{
-  background-color: rgb(52, 58, 64) !important;
+    background-color: rgb(52, 58, 64) !important;
+
 }
 
 .sticky{
@@ -75,23 +75,21 @@ background-color:  rgb(206, 194, 180) !important;
   }   
 
 .upvote{
-  background-image: url("../pictures/like.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  min-width: 3rem;
-  min-height: 3rem;
-  background-color: black;
-  
-  border-radius: 100% !important;
-  border: solid 2px grey !important;
+    background-image: url("../pictures/like.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    min-width: 3rem;
+    min-height: 3rem;
+    background-color: black;
+    border-radius: 100% !important;
+    border: solid 2px grey !important;
  
-  
 }
 .bordering{
-  border-radius: 5px !important;
-  border: 3px solid grey !important;
-  width:77px;
+    border-radius: 5px !important;
+    border: 3px solid grey !important;
+    width:77px;
     height: 77px;
     margin: auto;
     background-color:rgb(92, 87, 80)
@@ -99,55 +97,67 @@ background-color:  rgb(206, 194, 180) !important;
 }
 
 .downvote{
-  background-image: url("../pictures/dislike.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  min-width: 3rem;
-  min-height: 3rem;
-  background-color: black;
- 
-  border-radius: 100% !important;
-  border: solid 2px grey !important;
+    background-image: url("../pictures/dislike.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    min-width: 3rem;
+    min-height: 3rem;
+    background-color: black;
+    border-radius: 100% !important;
+    border: solid 2px grey !important;
   
 }
 .nofav{
-  
-  background-image: url("../pictures/nofav.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  min-width: 3rem;
-  min-height: 3rem;
-  border: none;
+    background-image: url("../pictures/nofav.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    min-width: 3rem;
+    min-height: 3rem;
+    border: none;
+
 }
 .onfav{
-  
-  background-image: url("../pictures/onfav.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  min-width: 3rem;
-  min-height: 3rem;
-  border: none;
+    background-image: url("../pictures/onfav.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    min-width: 3rem;
+    min-height: 3rem;
+    border: none;
+
 }
 
 select{ background-color: blanchedalmond;
         border:1px solid black;
-
         border-radius: 5px;
+
 }
+
 input[type=submit]{
-  border:1px solid black;
-  border-radius: 5px;
-  margin: 1% 1% 1% 1%;
-  background-color:rgb(92, 87, 80)
+    border:1px solid black;
+    border-radius: 5px;
+    margin: 1% 1% 1% 1%;
+    background-color:rgb(92, 87, 80);
+
 }
+
 input [type='text']{ background-color: yellow !important;
     border:none;
+
 }
+
 .vastag{
-font-weight: 300 !important;
+    font-weight: 300 !important;
+
+}
+
+#oldalsav{
+    position: fixed;
+    z-index: 0;
+    float: left;
+    left: 0;
 
 }
 #oldalsav{
@@ -158,27 +168,29 @@ float: left;
 left: 0;
 }
 .sidenav {
-height: 100%;
-width: 0;
-position: fixed;
-z-index: 1;
-float: left;
-left: 0;
-background-color:rgb(206, 194, 180) !important;
-text-align: center;
-overflow-x: hidden;
-transition: 1s;
-padding-top: 60px;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    float: left;
+    left: 0;
+    background-color:rgb(206, 194, 180) !important;
+    text-align: center;
+    overflow-x: hidden;
+    transition: 1s;
+    padding-top: 60px;
 
-  }
-  .sidenav .closebtn {
+}
+
+.sidenav .closebtn {
     position: absolute;
     top: 0;
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
-  }
-  .sidenav a {
+}
+
+.sidenav a {
     padding: 0 32px 0 32px;
     color: red;
     text-decoration: none;
@@ -186,17 +198,9 @@ padding-top: 60px;
     display: block;
     transition: 0.1s;
     font-family: 'Supermercado One';
-  }
-  a:link { 
-    text-decoration: none!important; } 
-  a:visited { 
-    text-decoration: none!important; } 
-  a:hover { 
-    text-decoration: none!important; } 
-  a:active { 
-    text-decoration: none!important; }
+}
 
-  .sidenav a :hover{
+.sidenav a :hover{
     padding: 8px 32px 8px 32px;
     color: rgb(116, 136, 1);
     text-decoration: none;
@@ -204,77 +208,103 @@ padding-top: 60px;
     display: block;
     transition: 0.1s;
     font-family: 'Supermercado One';
-  }
-  .kozep {
+}
+
+.kozep {
     margin:auto;
     text-decoration: none !important;
 
-  }
+}
+
+a:link { 
+    text-decoration: none!important; 
+
+} 
+
+a:visited { 
+    text-decoration: none!important; 
+
+} 
+
+a:hover { 
+    text-decoration: none!important;
+
+ } 
+
+a:active { 
+    text-decoration: none!important; 
+
+}
 
   
 #absolut{
+    display: flex;
+    align-items:center;
+    justify-content:center;
   
-  display: flex;
-  align-items:center;
-  justify-content:center;
-  
+}
+
+.menuItem{
+    margin:auto;
+
+}
+
+hr.vonal{
+    border: 0.7px solid rgb(255, 255, 255);
+
+
+}
+
+.middle{
+    width:30%;
+    margin:auto;
+    margin-top: 5%;
+    background-color: rgb(255, 255, 0,0.1);
+    border-radius: 20px;
+    text-align: center;
+    padding: 2% 0 2% 0;
+    border: solid 2px grey;
+
+}
+
+.feher{
+  color: rgb(150, 1, 1);
+
 }
 
 @media screen and (max-width: 1000px) {
-    .keret {
+  .keret {
+
       flex-basis: 80%;
-        width: 70%;
-        font-size: 2vh;
-        max-height: 100vh;
-        
-      }
-      /*.sidenav {
-        height: ;
-        justify-content:;
-      }*/
-    .le{
+      width: 70%;
+      font-size: 2vh;
+      max-height: 100vh;
+      
+  }
+    
+  .le{
+
       max-width: 5rem;
       max-height: 5rem;
-    }
-    .fel{
+
+  }
+
+  .fel{
+
       max-width: 5rem;
       max-height: 5rem; 
-      
-    }
-    #category{
-      display: none;
-    }
     
-    .flex-container{
-      justify-content:flex-end;
-    }  
-  
-}
-.menuItem{
-  margin:auto;
-}
-hr.vonal{
-  border: 0.7px solid rgb(255, 255, 255);
+  }
 
-}
-.middle{
-  width:30%;
-  margin:auto;
-  margin-top: 5%;
-  background-color: rgb(255, 255, 0,0.1);
+  #category{
+      display: none;
+
+  }
   
-  border-radius: 20px;
-  text-align: center;
-  padding: 2% 0 2% 0;
-  border: solid 2px grey;
-}
-.feher{
-  color: rgb(150, 1, 1);
-}
-#cat{
-  width: 50%;
-}
-.vote{
-  border: solid 2px grey;
-  border-radius: 20px;
+  .flex-container{
+
+      justify-content:flex-end;
+
+  }  
+
 }

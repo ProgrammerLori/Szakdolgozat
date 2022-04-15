@@ -20,7 +20,6 @@ if(isset($_POST['username']) and isset($_POST['password'])and isset($_POST['emai
     }else{
         $sql = "INSERT INTO users (username,pw,email,gender)
         VALUES ('".htmlspecialchars(mysqli_real_escape_string($conn,$_POST['username']))."','".md5($_POST['password'])."','".htmlspecialchars(mysqli_real_escape_string($conn,$_POST['email']))."','".htmlspecialchars(mysqli_real_escape_string($conn,$_POST['gender']))."')";
-
         if ($conn->query($sql) === TRUE) {
             echo "Sikeres regisztráció ";
         } else {
