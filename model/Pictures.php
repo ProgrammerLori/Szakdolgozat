@@ -67,7 +67,7 @@ class Pictures {
     }
     public function kepList($conn) {
         $lista = array();
-        $sql = "SELECT picture_id FROM pictures ORDER BY picture_id Desc";
+        $sql = "SELECT picture_id FROM pictures ORDER BY picture_id Desc ";
         if($result = $conn->query($sql)) {
             if ($result->num_rows > 0) {
 				while($row = $result->fetch_assoc()) {
